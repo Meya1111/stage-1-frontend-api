@@ -1,11 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./components/App/App";
-import "./index.css";
+import Navigation from "../Navigation/Navigation";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
+function Main() {
+  return (
+    <>
+      <Navigation />
+      <div>Main content</div>
+    </>
+  );
+}
+
+export default Main;
