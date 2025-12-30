@@ -25,13 +25,16 @@
   
   .modal__close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 24px;
-    height: 24px;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
     background: transparent url("../../assets/Close\ Icon.svg") center/contain no-repeat;
     border: none;
+    padding: 0;
     cursor: pointer;
+    z-index: 5;
+    opacity: 1;
   }
   .modal__title {
     margin: 0 0 24px;
