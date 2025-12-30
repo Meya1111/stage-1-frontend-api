@@ -1,6 +1,6 @@
 import "./Header.css";
 
-function Header() {
+function Header({onSignInClick}) {
   return (
     <header className="header">
       <div className="header__overlay">
@@ -9,11 +9,16 @@ function Header() {
 
           <nav className="header__nav">
             <button className="header__link header__link_active">Home</button>
-            <button className="header__button">Sign in</button>
+            <button className="header__button" onClick={onSignInClick}>
+              Sign in
+            </button>
           </nav>
         </div>
         <div className="header__hero">
-          <h1 className="header__title">What&apos;s going on in the world?</h1>
+          <h1 className="header__title">
+            What's going on in <br />
+            the world?
+          </h1>
 
           <p className="header__subtitle">
             Find the latest news on any topic and save them in your personal
