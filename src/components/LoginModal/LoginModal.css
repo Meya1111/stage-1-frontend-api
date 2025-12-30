@@ -18,17 +18,17 @@
     height: 380px;
     background-color: #fff;
     border-radius: 16px;
-    padding: 34px 36px;
+    padding: 32px 36px;
     box-sizing: border-box;
     z-index: 1;
   }
   
   .modal__close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 20px;
-    height: 20px;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
     background: transparent url("../../assets/Close\ Icon.svg") center/contain no-repeat;
     border: none;
     cursor: pointer;
@@ -56,14 +56,15 @@
   }
   
   .modal__submit {
-    margin-top: 12px;
+    width: 100%;
     height: 48px;
-    background-color: #2f71e5;
-    color: #fff;
+    background-color: #e6e8eb;
+    color: #b6bcbf;
     border-radius: 100px;
     border: none;
     font-size: 16px;
-    cursor: pointer;
+    margin-top: 8px;
+    cursor: default;
   }
   
   .modal__switch {
