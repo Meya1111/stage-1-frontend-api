@@ -1,12 +1,44 @@
-function LoginModal({ onClose }) {
+import "./LoginModal.css";
+
+function LoginModal({ isOpen, onClose }) {
+    if (!isOpen) return null;
+  
     return (
       <div className="modal">
+        <div className="modal__overlay" onClick={onClose}></div>
+  
         <div className="modal__content">
-          <h2>Sign in</h2>
+          <button
+            type="button"
+            className="modal__close"
+            onClick={onClose}
+          ></button>
   
-          <p>Login not set up yet</p>
+          <h2 className="modal__title">Sign in</h2>
   
-          <button onClick={onClose}>Close</button>
+          <label className="modal__label">
+            Email
+            <input
+              type="email"
+              className="modal__input"
+              placeholder="Enter email"
+            />
+          </label>
+  
+          <label className="modal__label">
+            Password
+            <input
+              type="password"
+              className="modal__input"
+              placeholder="Enter password"
+            />
+          </label>
+  
+          <button className="modal__submit">Sign in</button>
+  
+          <p className="modal__switch">
+            or <span>Sign up</span>
+          </p>
         </div>
       </div>
     );

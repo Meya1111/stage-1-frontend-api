@@ -14,7 +14,10 @@ function App() {
       <Footer />
 
       {isLoginOpen && (
-        <LoginModal onClose={() => setIsLoginOpen(false)} />
+        <LoginModal
+          isOpen={isLoginOpen}
+          onClose={() => setIsLoginOpen(false)}
+        />
       )}
     </div>
   );
