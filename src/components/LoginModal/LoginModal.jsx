@@ -1,6 +1,6 @@
 import "./LoginModal.css";
 
-function LoginModal({ isOpen, onClose }) {
+function LoginModal({ isOpen, onClose, onSwitch }) {
   if (!isOpen) return null;
 
   return (
@@ -8,8 +8,14 @@ function LoginModal({ isOpen, onClose }) {
       <div className="modal__overlay" onClick={onClose}></div>
 
       <div className="modal__content">
-      <button type="button" className="modal__close" onClick={onClose} aria-label="Close modal">
-      </button>
+        <button
+          type="button"
+          className="modal__close"
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          x
+        </button>
         <h2 className="modal__title">Sign in</h2>
 
         <label className="modal__label">
@@ -33,7 +39,7 @@ function LoginModal({ isOpen, onClose }) {
         <button className="modal__submit">Sign in</button>
 
         <p className="modal__switch">
-          or <span>Sign up</span>
+          or <span onClick={onSwitch}>Sign up</span>
         </p>
       </div>
     </div>

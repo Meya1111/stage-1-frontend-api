@@ -3,9 +3,26 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
+import SignUpModal from "../SignUpModal/SignUpModal";
 
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
+  const openLogin = () => {
+    setIsSignUpOpen(false);
+    setIsLoginOpen(true);
+  };
+
+  const openSignUp = () => {
+    setIsLoginOpen(false);
+    setIsSignUpOpen(true);
+  };
+
+  const closeAllModals = () => {
+    setIsLoginOpen(false);
+    setIsSignUpOpen(false);
+  };
 
   return (
     <div className="page">
@@ -13,12 +30,17 @@ function App() {
       <Main />
       <Footer />
 
-      {isLoginOpen && (
-        <LoginModal
-          isOpen={isLoginOpen}
-          onClose={() => setIsLoginOpen(false)}
-        />
-      )}
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={closeAllModals}
+        onSwitch={openSignUp}
+      />
+
+      <SignUpModal
+        isOpen={isSignUpOpen}
+        onClose={closeAllModals}
+        onSwitch={openLogin}
+      />
     </div>
   );
 }
