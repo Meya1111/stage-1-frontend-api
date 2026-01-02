@@ -1,1 +1,6 @@
 @import "../LoginModal/LoginModal.css";
+
+.modal__content_signup {
+    width: 430px;
+    min-height: 440px;
+  }

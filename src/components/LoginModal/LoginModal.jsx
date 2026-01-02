@@ -1,13 +1,21 @@
 import "./LoginModal.css";
+import { useState } from "react";
 
 function LoginModal({ isOpen, onClose, onSwitch }) {
   if (!isOpen) return null;
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+
+  const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
+  const isFormValid = isEmailValid && password.length >= 1;
 
   return (
     <div className="modal">
       <div className="modal__overlay" onClick={onClose}></div>
 
-      <div className="modal__content">
+      <div className="modal__content modal__content_auth">
         <button
           type="button"
           className="modal__close"
@@ -24,7 +32,15 @@ function LoginModal({ isOpen, onClose, onSwitch }) {
             type="email"
             className="modal__input"
             placeholder="Enter email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setLoginError("");
+            }}
           />
+          {email && !isEmailValid && (
+            <span className="modal__error">Invalid email address</span>
+          )}
         </label>
 
         <label className="modal__label">
@@ -33,10 +49,34 @@ function LoginModal({ isOpen, onClose, onSwitch }) {
             type="password"
             className="modal__input"
             placeholder="Enter password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setLoginError("");
+            }}
           />
         </label>
 
-        <button className="modal__submit">Sign in</button>
+        {loginError && (
+          <span className="modal__error modal__error_center">{loginError}</span>
+        )}
+
+        <button
+          className={`modal__submit ${
+            isFormValid ? "modal__submit_active" : ""
+          }`}
+          disabled={!isFormValid}
+          onClick={() => {
+            if (email !== "example@test.com") {
+              setLoginError("Incorrect email or password");
+              return;
+            }
+
+            onClose();
+          }}
+        >
+          Sign in
+        </button>
 
         <p className="modal__switch">
           or <span onClick={onSwitch}>Sign up</span>

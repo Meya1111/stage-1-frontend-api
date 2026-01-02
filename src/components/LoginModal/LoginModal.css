@@ -14,8 +14,6 @@
   }
   .modal__content {
     position: relative;
-    width: 430px;
-    height: 380px;
     background-color: #fff;
     border-radius: 16px;
     padding: 32px 36px;
@@ -23,6 +21,11 @@
     z-index: 1;
   }
   
+  .modal__content_login {
+    width: 430px;
+    min-height: 380px;
+  }
+
   .modal__close {
     position: absolute;
     top: -40px;
@@ -60,6 +63,21 @@
     font-size: 14px;
     border: none;
     border-bottom: 1px solid #000;
+  }
+
+  .modal__content_auth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    width: 430px;
+    min-height: 380px;
+  
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-sizing: border-box;
   }
   
   .modal__submit {

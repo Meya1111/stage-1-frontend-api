@@ -1,7 +1,7 @@
 import "./SignUpModal.css";
 import { useState } from "react";
 
-function SignUpModal({ isOpen, onClose, onSwitch }) {
+function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
   if (!isOpen) return null;
 
   const [email, setEmail] = useState("");
@@ -11,17 +11,19 @@ function SignUpModal({ isOpen, onClose, onSwitch }) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [usernameError, setUsernameError] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
-  const isEmailValid = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
+  const isPasswordValid = password.length >= 6;
+  const isUsernameValid = username.length >= 2;
 
-  const isFormValid =
-    email && password.length >= 6 && username && isEmailValid(email);
+  const isFormValid = isEmailValid && isPasswordValid && isUsernameValid;
 
   return (
     <div className="modal">
       <div className="modal__overlay" onClick={onClose}></div>
 
-      <div className="modal__content">
+      <div className="modal__content modal__content_auth">
         <button
           type="button"
           className="modal__close"
@@ -42,26 +44,32 @@ function SignUpModal({ isOpen, onClose, onSwitch }) {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              setEmailError(
-                isEmailValid(e.target.value) ? "" : "Invalid email address"
-              );
+              setEmailError("");
+              setSubmitError("");
             }}
           />
-          {emailError && <span className="modal__error">{emailError}</span>}
+          {email && !isEmailValid && (
+            <span className="modal__error">Invalid email address</span>
+          )}
         </label>
 
         <label className="modal__label">
           Password
           <input
-            type="text"
+            type="password"
             className="modal__input"
-            placeholder="Enter your password"
-            value={username}
+            placeholder="Enter password"
+            value={password}
             onChange={(e) => {
-              setUsername(e.target.value);
-              setUsernameError(e.target.value ? "" : "Username is required");
+              setPassword(e.target.value);
+              setPasswordError("");
             }}
           />
+          {password && !isPasswordValid && (
+            <span className="modal__error">
+              Password must be at least 6 characters
+            </span>
+          )}
           {usernameError && (
             <span className="modal__error">{usernameError}</span>
           )}
@@ -76,18 +84,33 @@ function SignUpModal({ isOpen, onClose, onSwitch }) {
             value={username}
             onChange={(e) => {
               setUsername(e.target.value);
-              setUsernameError(e.target.value ? "" : "Username is required");
+              setUsernameError("");
             }}
           />
           {usernameError && (
             <span className="modal__error">{usernameError}</span>
           )}
         </label>
+
+        {submitError && (
+          <span className="modal__error modal__error_center">
+            {submitError}
+          </span>
+        )}
+
         <button
           className={`modal__submit ${
             isFormValid ? "modal__submit_active" : ""
           }`}
           disabled={!isFormValid}
+          onClick={() => {
+            if (email === "example@test.com") {
+              setSubmitError("This email is not available");
+              return;
+            }
+
+            onSuccess();
+          }}
         >
           Sign up
         </button>

@@ -4,10 +4,12 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
+import RegisteredSuccessModal from "../RegisteredSuccessModal/RegisteredSuccessModal";
 
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
 
   const openLogin = () => {
     setIsSignUpOpen(false);
@@ -19,9 +21,15 @@ function App() {
     setIsSignUpOpen(true);
   };
 
+  const openSuccessModal = () => {
+    setIsSignUpOpen(false);
+    setIsSuccessOpen(true);
+  };
+
   const closeAllModals = () => {
     setIsLoginOpen(false);
     setIsSignUpOpen(false);
+    setIsSuccessOpen(false);
   };
 
   return (
@@ -40,6 +48,13 @@ function App() {
         isOpen={isSignUpOpen}
         onClose={closeAllModals}
         onSwitch={openLogin}
+        onSuccess={openSuccessModal}
+      />
+
+      <RegisteredSuccessModal
+        isOpen={isSuccessOpen}
+        onClose={closeAllModals}
+        onSignIn={openLogin}
       />
     </div>
   );
