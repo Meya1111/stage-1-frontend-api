@@ -136,3 +136,23 @@
   font-family: "Roboto Slab", serif;
   font-weight: 400;
 }
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.header__logout {
+  width: 16px;
+  height: 16px;
+  background-image: url("../../assets/Door.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}

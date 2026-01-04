@@ -67,12 +67,12 @@ function LoginModal({ isOpen, onClose, onSwitch, onLogin }) {
           }`}
           disabled={!isFormValid}
           onClick={() => {
-            if (email !== "example@test.com") {
-              setLoginError("Incorrect email or password");
+            if (!email || !password) {
+              setLoginError("Email and password required");
               return;
             }
-
-            onLogin();
+          
+            onLogin(email);
             onClose();
           }}
         >

@@ -1,6 +1,6 @@
 import "./Header.css";
 
-function Header({ onSignInClick, isLoggedIn }) {
+function Header({ onSignInClick, isLoggedIn, currentUser, onLogout }) {
   return (
     <header className="header">
       <div className="header__overlay">
@@ -9,12 +9,23 @@ function Header({ onSignInClick, isLoggedIn }) {
 
           <nav className="header__nav">
             <button className="header__link header__link_active">Home</button>
-            {!isLoggedIn ? (
+            {isLoggedIn ? (
+              <>
+                <button className="header__link">Saved articles</button>
+
+                <button className="header__user">
+                  {currentUser?.name}
+                  <span
+                    className="header__logout"
+                    onClick={onLogout}
+                    aria-label="Log out"
+                  />
+                </button>
+              </>
+            ) : (
               <button className="header__button" onClick={onSignInClick}>
                 Sign in
               </button>
-            ) : (
-              <button className="header__button">Saved articles</button>
             )}
           </nav>
         </div>

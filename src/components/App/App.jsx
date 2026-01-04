@@ -5,21 +5,26 @@ import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import RegisteredSuccessModal from "../RegisteredSuccessModal/RegisteredSuccessModal";
-import { Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
+  const handleLogin = (email) => {
+    setCurrentUser({
+      name: email.split("@")[0], 
+    });
     setIsLoggedIn(true);
     closeAllModals();
-    navigate("/");
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(null);
   };
 
   const openLogin = () => {
@@ -45,7 +50,7 @@ function App() {
 
   return (
     <div className="page">
-      <Header onSignInClick={openLogin} />
+      <Header onSignInClick={openLogin} isLoggedIn={isLoggedIn} currentUser={currentUser} onLogout={handleLogout} />
       <Main isLoggedIn={isLoggedIn} />
       <Footer />
 
