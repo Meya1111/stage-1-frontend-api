@@ -1,8 +1,10 @@
 import "./Main.css";
+import Preloader from "../Preloader/Preloader";
 
-function Main() {
+function Main({ isLoading, articles }) {
   return (
     <main className="main">
+      {isLoading && <Preloader />}
       <section className="author">
         <div className="author__container">
           <div className="author__avatar">
