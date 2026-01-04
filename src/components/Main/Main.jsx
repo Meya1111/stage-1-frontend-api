@@ -9,7 +9,7 @@ function Main() {
             <div className="author__smiley">
               <span className="author__eye author__eye_left"></span>
               <span className="author__eye author__eye_right"></span>
-              <span className="author__smile"></span>
+              <img src="/src/assets/authorsmile.svg" className="author__smile" />
             </div>
 
             <p className="author__avatar-text">

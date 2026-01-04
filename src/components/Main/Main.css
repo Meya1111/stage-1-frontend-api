@@ -84,25 +84,11 @@
   
   .author__smile {
     position: absolute;
+    bottom: 14px;
     left: 50%;
-    bottom: 16px;
-  
-    width: 24px;
-    height: 12px;
-  
     transform: translateX(-50%);
-    overflow: hidden; 
+    width: 21px;
+    height: auto;
   }
   
-  .author__smile::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -12px;
-  
-    width: 24px;
-    height: 24px;
-  
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-  }
+ 
