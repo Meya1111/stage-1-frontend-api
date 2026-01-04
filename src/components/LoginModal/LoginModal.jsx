@@ -1,7 +1,7 @@
 import "./LoginModal.css";
 import { useState } from "react";
 
-function LoginModal({ isOpen, onClose, onSwitch }) {
+function LoginModal({ isOpen, onClose, onSwitch, onLogin }) {
   if (!isOpen) return null;
 
   const [email, setEmail] = useState("");
@@ -72,6 +72,7 @@ function LoginModal({ isOpen, onClose, onSwitch }) {
               return;
             }
 
+            onLogin();
             onClose();
           }}
         >

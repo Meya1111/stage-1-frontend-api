@@ -1,6 +1,6 @@
 import "./Header.css";
 
-function Header({onSignInClick}) {
+function Header({ onSignInClick, isLoggedIn }) {
   return (
     <header className="header">
       <div className="header__overlay">
@@ -9,9 +9,13 @@ function Header({onSignInClick}) {
 
           <nav className="header__nav">
             <button className="header__link header__link_active">Home</button>
-            <button className="header__button" onClick={onSignInClick}>
-              Sign in
-            </button>
+            {!isLoggedIn ? (
+              <button className="header__button" onClick={onSignInClick}>
+                Sign in
+              </button>
+            ) : (
+              <button className="header__button">Saved articles</button>
+            )}
           </nav>
         </div>
         <div className="header__hero">
