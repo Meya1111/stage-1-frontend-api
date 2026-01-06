@@ -1,12 +1,13 @@
-const newsApiBaseUrl =
-  import.meta.env.MODE === "production"
-    ? "https://nomoreparties.co/news/v2/everything"
-    : "https://newsapi.org/v2/everything";
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+const BASE_URL = "https://newsapi.org/v2/everything";
 
-export const getNews = ({ keyword, from, to, pageSize = 100 }) => {
-  const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+export function getArticles(keyword) {
+  const from = new Date();
+  from.setDate(from.getDate() - 7);
 
-  const url = `${newsApiBaseUrl}?q=${keyword}&from=${from}&to=${to}&pageSize=${pageSize}&apiKey=${apiKey}`;
+  const url = `${BASE_URL}?q=${encodeURIComponent(
+    keyword
+  )}&from=${from.toISOString()}&pageSize=100&apiKey=${API_KEY}`;
 
   return fetch(url).then((res) => {
     if (!res.ok) {
@@ -14,4 +15,4 @@ export const getNews = ({ keyword, from, to, pageSize = 100 }) => {
     }
     return res.json();
   });
-};
+}

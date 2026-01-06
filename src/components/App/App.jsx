@@ -5,9 +5,9 @@ import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import RegisteredSuccessModal from "../RegisteredSuccessModal/RegisteredSuccessModal";
-import Preloader from "../Preloader/Preloader";
-import SavedArticles from "../../pages/SavedArticles";
-import { Routes, Route } from "react-router-dom"
+import { getArticles } from "../../utils/newsApi";
+import React from "react";
+import "./App.css";
 
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -17,17 +17,20 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [isSearched, setIsSearched] = React.useState(false);
 
   function handleSearch(keyword) {
     setIsLoading(true);
-
-    newsApi
-      .getArticles(keyword)
-      .then((res) => {
-        setArticles(res.articles);
+    setIsSearched(true);
+  
+    getArticles(keyword)
+      .then((data) => {
+        console.log("REAL API DATA:", data);
+        setArticles(data.articles || []);
       })
-      .catch(() => {
-        console.error("Search failed");
+      .catch((err) => {
+        console.error(err);
+        setArticles([]);
       })
       .finally(() => {
         setIsLoading(false);
@@ -75,6 +78,7 @@ function App() {
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
         onLogout={handleLogout}
+        onSearch={handleSearch}
       />
       <Main
         isLoggedIn={isLoggedIn}

@@ -1,6 +1,21 @@
 import "./Header.css";
+import { useState } from "react";
 
-function Header({ onSignInClick, isLoggedIn, currentUser, onLogout }) {
+function Header({
+  onSignInClick,
+  isLoggedIn,
+  currentUser,
+  onLogout,
+  onSearch,
+}) {
+  const [keyword, setKeyword] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!keyword.trim()) return;
+    onSearch(keyword);
+  }
+
   return (
     <header className="header">
       <div className="header__overlay">
@@ -40,11 +55,13 @@ function Header({ onSignInClick, isLoggedIn, currentUser, onLogout }) {
             account.
           </p>
 
-          <form className="search-form">
+          <form className="search-form" onSubmit={handleSubmit}>
             <input
               className="search-form__input"
               type="text"
               placeholder="Enter topic"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
             />
             <button className="search-form__button" type="submit">
               Search

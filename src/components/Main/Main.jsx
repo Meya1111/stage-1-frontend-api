@@ -1,17 +1,40 @@
 import "./Main.css";
+import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
+import NotFound from "../NotFound/NotFound";
 
-function Main({ isLoading, articles }) {
+function Main({ isLoading, articles, isSearched, onSearch, onShowMore }) {
   return (
     <main className="main">
+     
+
       {isLoading && <Preloader />}
+
+      {articles.length > 0 && (
+        <section className="search-results">
+          <h2 className="search-results__title">Search results</h2>
+
+          <ul className="cards">
+            {articles.map((article, index) => (
+              <NewsCard key={index} article={article} isLoggedIn={false}/>
+            ))}
+          </ul>
+
+          <button className="search-results__button" onClick={onShowMore}>
+            Show more
+          </button>
+        </section>
+      )}
       <section className="author">
         <div className="author__container">
           <div className="author__avatar">
             <div className="author__smiley">
               <span className="author__eye author__eye_left"></span>
               <span className="author__eye author__eye_right"></span>
-              <img src="/src/assets/authorsmile.svg" className="author__smile" />
+              <img
+                src="/src/assets/authorsmile.svg"
+                className="author__smile"
+              />
             </div>
 
             <p className="author__avatar-text">

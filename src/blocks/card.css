@@ -1,0 +1,45 @@
+.cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
+  height: 272px;
+  object-fit: cover;
+}
+
+.card__content {
+  padding: 20px;
+}
+
+.card__date {
+  color: #b6bcbf;
+  font-size: 14px;
+}
+
+.card__title {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.card__text {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.card__source {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+}
