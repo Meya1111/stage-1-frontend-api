@@ -1,5 +1,6 @@
 .main {
     width: 100%;
+    overflow: visible;
   }
   
   .author {
@@ -91,4 +92,15 @@
     height: auto;
   }
   
+  .search-results__title {
+   width: 712px;
+   height: 46px;
+   top: 656px;
+   left: 104px;
+   font-family: Roboto Slab;
+   font-weight: 400;
+   font-size: 40px;
+   line-height: 46px;
+   letter-spacing: 0px;
+  }
  
