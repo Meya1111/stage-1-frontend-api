@@ -1,28 +1,34 @@
 import "./Main.css";
+import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import NotFound from "../NotFound/NotFound";
 
-function Main({ isLoading, articles, isSearched, onSearch, onShowMore }) {
+function Main({ isLoading, articles, isSearched }) {
+  const [visibleCount, setVisibleCount] = React.useState(3);
+
   return (
     <main className="main">
-     
-
       {isLoading && <Preloader />}
 
-      {articles.length > 0 && (
+      {articles && articles.length > 0 && (
         <section className="search-results">
           <h2 className="search-results__title">Search results</h2>
 
           <ul className="cards">
-            {articles.map((article, index) => (
-              <NewsCard key={index} article={article} isLoggedIn={false}/>
+            {articles.slice(0, visibleCount).map((article, index) => (
+              <NewsCard key={index} article={article} isLoggedIn={false} />
             ))}
           </ul>
 
-          <button className="search-results__button" onClick={onShowMore}>
-            Show more
-          </button>
+          {visibleCount < articles.length && (
+            <button
+              className="search-results__button"
+              onClick={() => setVisibleCount(visibleCount + 3)}
+            >
+              Show more
+            </button>
+          )}
         </section>
       )}
       <section className="author">

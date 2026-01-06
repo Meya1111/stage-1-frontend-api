@@ -93,14 +93,32 @@
   }
   
   .search-results__title {
-   width: 712px;
-   height: 46px;
-   top: 656px;
-   left: 104px;
    font-family: Roboto Slab;
-   font-weight: 400;
+   font-weight: 370;
    font-size: 40px;
    line-height: 46px;
    letter-spacing: 0px;
+   margin: 0 0 42px;
+  }
+
+  .search-results {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 21px;
+    margin-top: 70px;
+  }
+
+  .search-results__button {
+    width: 288px;
+    height: 64px;
+    border: none;
+    border-radius: 32px;
+    background-color: #FFFFFF;
+    margin-top: 60px;
+    display: block;
+    margin: 64px auto 0;
   }
  
+  .search-results__button-wrapper {
+    margin-bottom: 96px;
+  }
