@@ -15,6 +15,7 @@ function Main({
 
   return (
     <main className="main">
+      // add hero components //
       {isLoading && <Preloader />}
 
       {articles && articles.length > 0 && (
