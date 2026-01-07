@@ -45,13 +45,15 @@ function Header({
                   Saved articles
                 </button>
 
-                <button className="header__user">
+                <button
+                  className="header__user"
+                  onClick={() => {
+                    onLogout();
+                    navigate("/");
+                  }}
+                >
                   {currentUser?.name}
-                  <span
-                    className="header__logout"
-                    onClick={onLogout}
-                    aria-label="Log out"
-                  />
+                  <span className="header__logout" aria-label="Log out" />
                 </button>
               </>
             ) : (

@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { getSavedArticles, removeSavedArticleByUrl } from "../../utils/savedArticles";
 
-// If you already have a CardList component, reuse it.
-// For now, we’ll render simple cards with a delete button.
 export default function SavedArticles({ currentUserName = "Elise" }) {
   const [saved, setSaved] = useState([]);
 
@@ -36,7 +34,8 @@ export default function SavedArticles({ currentUserName = "Elise" }) {
 
   return (
     <main className="saved">
-      <section className="saved__header">
+      <section className="saved__hero">
+        <div className="saved__header">
         <p className="saved__title">Saved articles</p>
 
         <h1 className="saved__count">
@@ -48,6 +47,7 @@ export default function SavedArticles({ currentUserName = "Elise" }) {
             By keywords: <span>{keywordsLine}</span>
           </p>
         )}
+        </div>
       </section>
 
       <section className="saved__list">
@@ -57,7 +57,6 @@ export default function SavedArticles({ currentUserName = "Elise" }) {
               <div className="card__image-wrap">
                 {a.keyword && <span className="card__keyword">{a.keyword}</span>}
 
-                {/* delete icon button (trash) */}
                 <button
                   className="card__delete-button"
                   type="button"

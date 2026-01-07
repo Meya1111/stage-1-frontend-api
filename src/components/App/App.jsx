@@ -10,8 +10,13 @@ import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import SavedArticles from "../SavedArticles/SavedArticles";
+import { useLocation } from "react-router-dom";
 
 function App() {
+
+  const location = useLocation();
+  const isSavedPage = location.pathname === "/saved-news";
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
@@ -74,7 +79,7 @@ function App() {
   };
 
   return (
-    <div className="page">
+    <div className="page page_saved">
       <Header
         onSignInClick={openLogin}
         isLoggedIn={isLoggedIn}
