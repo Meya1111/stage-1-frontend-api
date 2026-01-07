@@ -1,4 +1,10 @@
 import "./NewsCard.css";
+import { useEffect, useState } from "react";
+import {
+  addSavedArticle,
+  removeSavedArticleByUrl,
+  isArticleSaved,
+} from "../../utils/savedArticles.js";
 
 function NewsCard({ article }) {
   return (

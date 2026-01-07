@@ -105,6 +105,11 @@
   border-bottom: 3px solid #fff;
 }
 
+.header__link_saved {
+  color: #000;
+  font-weight: 500;
+}
+
 .header__button {
   background: transparent;
   border: 1px solid #ffffff;
@@ -157,3 +162,46 @@
   background-repeat: no-repeat;
 }
 
+.header_saved {
+  background-image: none;
+  background-color: #f5f6f7;
+  min-height: auto;
+}
+
+.header_saved .header__overlay {
+  background: none;
+}
+
+.header_saved .header__logo {
+  color: #000;
+}
+
+.header_saved .header__hero {
+  display: none;
+}
+
+.header_saved .header__link {
+  color: #000;
+}
+
+.header_saved .header__link:hover  {
+  opacity: 0.7;
+}
+
+.header_saved .header__user {
+  color: #000;
+  border: 1px solid #000;
+}
+
+.header_saved .header__user:hover  {
+  opacity: 0.7;
+}
+
+
+.header_saved .header__logout {
+filter: invert(1);
+}
+
+.header_saved .header__logout:hover  {
+  opacity: 0.7;
+}

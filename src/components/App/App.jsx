@@ -8,6 +8,8 @@ import RegisteredSuccessModal from "../RegisteredSuccessModal/RegisteredSuccessM
 import { getArticles } from "../../utils/newsApi";
 import React from "react";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import SavedArticles from "../SavedArticles/SavedArticles";
 
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -22,7 +24,7 @@ function App() {
   function handleSearch(keyword) {
     setIsLoading(true);
     setIsSearched(true);
-  
+
     getArticles(keyword)
       .then((data) => {
         console.log("REAL API DATA:", data);
@@ -80,12 +82,26 @@ function App() {
         onLogout={handleLogout}
         onSearch={handleSearch}
       />
-      <Main
-        isLoggedIn={isLoggedIn}
-        onSearch={handleSearch}
-        isLoading={isLoading}
-        articles={articles}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main
+              isLoggedIn={isLoggedIn}
+              onSearch={handleSearch}
+              isLoading={isLoading}
+              articles={articles}
+            />
+          }
+        />
+
+        <Route
+          path="/saved-news"
+          element={
+            <SavedArticles currentUserName={currentUser?.name || "User"} />
+          }
+        />
+      </Routes>
       <Footer />
 
       <LoginModal
