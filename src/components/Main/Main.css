@@ -114,11 +114,18 @@
     border: none;
     border-radius: 32px;
     background-color: #FFFFFF;
-    margin-top: 60px;
-    display: block;
-    margin: 64px auto 0;
+
+    
   }
  
   .search-results__button-wrapper {
     margin-bottom: 96px;
+  }
+
+  .search-wrapper {
+    height: 208px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
   }

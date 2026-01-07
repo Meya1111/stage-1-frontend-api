@@ -25,6 +25,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
   const [isSearched, setIsSearched] = React.useState(false);
+  const [savedArticles, setSavedArticles] = useState([]);
 
   function handleSearch(keyword) {
     setIsLoading(true);
@@ -42,6 +43,14 @@ function App() {
       .finally(() => {
         setIsLoading(false);
       });
+  }
+
+  function handleSaveArticle(article) {
+    setSavedArticles((prev) => {
+      const exists = prev.some((item) => item.url === article.url);
+      if (exists) return prev;
+      return [...prev, article];
+    });
   }
 
   const handleLogin = (email) => {
@@ -96,6 +105,7 @@ function App() {
               onSearch={handleSearch}
               isLoading={isLoading}
               articles={articles}
+              onSaveArticle={handleSaveArticle}
             />
           }
         />
@@ -103,7 +113,7 @@ function App() {
         <Route
           path="/saved-news"
           element={
-            <SavedArticles currentUserName={currentUser?.name || "User"} />
+            <SavedArticles currentUserName={currentUser?.name || "User"}  savedArticles={savedArticles}/>
           }
         />
       </Routes>

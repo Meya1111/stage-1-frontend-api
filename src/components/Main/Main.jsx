@@ -4,7 +4,13 @@ import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import NotFound from "../NotFound/NotFound";
 
-function Main({ isLoading, articles, isSearched }) {
+function Main({
+  isLoading,
+  articles,
+  onSearch,
+  onSaveArticles,
+  savedArticles = [], onSaveArticle 
+}) {
   const [visibleCount, setVisibleCount] = React.useState(3);
 
   return (
@@ -17,17 +23,25 @@ function Main({ isLoading, articles, isSearched }) {
 
           <ul className="cards">
             {articles.slice(0, visibleCount).map((article, index) => (
-              <NewsCard key={index} article={article} isLoggedIn={false} />
+              <NewsCard
+                key={index}
+                article={article}
+                isLoggedIn={false}
+                isSaved={savedArticles.some((a) => a.url === article.url)}
+                onSave={onSaveArticle}
+              />
             ))}
           </ul>
 
           {visibleCount < articles.length && (
+            <div className="search-wrapper">
             <button
               className="search-results__button"
               onClick={() => setVisibleCount(visibleCount + 3)}
             >
               Show more
             </button>
+            </div>
           )}
         </section>
       )}

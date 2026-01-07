@@ -6,7 +6,7 @@ import {
   isArticleSaved,
 } from "../../utils/savedArticles.js";
 
-function NewsCard({ article }) {
+function NewsCard({ article, isLoggedIn, onSave }) {
   return (
     <li className="card">
       <img
@@ -18,6 +18,7 @@ function NewsCard({ article }) {
       <button
         className="card__save-button"
         type="button"
+        onClick={() => onSave(article)}
         aria-label="Save article"
       />
 
