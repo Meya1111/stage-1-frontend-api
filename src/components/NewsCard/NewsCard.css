@@ -23,11 +23,8 @@
 }
   
   .card__image {
-    width: 400px;
-    height: 400px;
-    top: 766px;
-    left: 520px;
-    object-fit: cover;
+    width: 100%;
+    height: 272px;
   }
   
   .card__content {
