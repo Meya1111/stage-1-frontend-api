@@ -4,6 +4,7 @@
   background-position: center;
   height: 576px;
   color: #fff;
+  position: relative;
 }
 
 .header__title {
@@ -65,6 +66,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .header__content {
@@ -75,6 +77,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   border-bottom: 1px solid #ededed;
+  z-index: 2;
 }
 
 .header__logo {
@@ -130,83 +133,5 @@
 
 .header__button:hover {
   opacity: 0.85;
-}
-
-.header__hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 80px; 
-  font-family: "Roboto Slab", serif;
-  font-weight: 400;
-}
-
-.header__user {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border: 1px solid #fff;
-  border-radius: 100px;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-}
-
-.header__logout {
-  width: 16px;
-  height: 16px;
-  background-image: url("../../assets/Door.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.header_saved {
-  background-image: none;
-  background-color: #f5f6f7;
-  min-height: auto;
-}
-
-.header_saved .header__overlay {
-  background: none;
-}
-
-.header_saved .header__logo {
-  color: #000;
-}
-
-.header_saved .header__hero {
-  display: none;
-}
-
-.header_saved .header__link {
-  color: #000;
-}
-
-.header_saved .header__link:hover  {
-  opacity: 0.7;
-}
-
-.header_saved .header__user {
-  color: #000;
-  border: 1px solid #000;
-}
-
-.header_saved .header__user:hover  {
-  opacity: 0.7;
-}
-
-
-.header_saved .header__logout {
-filter: invert(1);
-}
-
-.header_saved .header__logout:hover  {
-  opacity: 0.7;
-}
-
-.header_saved .header__link_active {
-  border-bottom-color: #000;
 }
 

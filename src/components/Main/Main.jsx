@@ -3,19 +3,29 @@ import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import NotFound from "../NotFound/NotFound";
+import Hero from "../Hero/Hero";
 
 function Main({
-  isLoading,
+  isSavedPage,
+  keyword,
+  setKeyword,
+  handleSubmit,
   articles,
-  onSearch,
-  onSaveArticles,
-  savedArticles = [], onSaveArticle 
+  isLoading,
+  savedArticles,
 }) {
   const [visibleCount, setVisibleCount] = React.useState(3);
 
   return (
     <main className="main">
-      // add hero components //
+      {!isSavedPage && (
+        <Hero
+          keyword={keyword}
+          setKeyword={setKeyword}
+          handleSubmit={handleSubmit}
+        />
+)}
+
       {isLoading && <Preloader />}
 
       {articles && articles.length > 0 && (
@@ -28,7 +38,6 @@ function Main({
                 key={index}
                 article={article}
                 isLoggedIn={false}
-                isSaved={savedArticles.some((a) => a.url === article.url)}
                 onSave={onSaveArticle}
               />
             ))}
@@ -36,12 +45,12 @@ function Main({
 
           {visibleCount < articles.length && (
             <div className="search-wrapper">
-            <button
-              className="search-results__button"
-              onClick={() => setVisibleCount(visibleCount + 3)}
-            >
-              Show more
-            </button>
+              <button
+                className="search-results__button"
+                onClick={() => setVisibleCount(visibleCount + 3)}
+              >
+                Show more
+              </button>
             </div>
           )}
         </section>

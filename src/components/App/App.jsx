@@ -12,10 +12,12 @@ import { Routes, Route } from "react-router-dom";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import { useLocation } from "react-router-dom";
 
+
 function App() {
 
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-news";
+  const [keyword, setKeyword] = React.useState("");
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
@@ -101,12 +103,14 @@ function App() {
           path="/"
           element={
             <Main
-              isLoggedIn={isLoggedIn}
-              onSearch={handleSearch}
-              isLoading={isLoading}
-              articles={articles}
-              onSaveArticle={handleSaveArticle}
-            />
+            isSavedPage={isSavedPage}
+            keyword={keyword}
+            setKeyword={setKeyword}
+            handleSubmit={handleSearch}
+            articles={articles}
+            isLoading={isLoading}
+            savedArticles={savedArticles}
+          />
           }
         />
 
