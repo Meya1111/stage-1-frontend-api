@@ -12,7 +12,6 @@ import { Routes, Route } from "react-router-dom";
 import SavedArticles from "../../components/SavedArticles/SavedArticles";
 import { useLocation } from "react-router-dom";
 
-
 function App() {
 
   const location = useLocation();

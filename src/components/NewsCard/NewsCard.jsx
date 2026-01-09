@@ -7,6 +7,7 @@ import {
 } from "../../utils/savedArticles.js";
 
 function NewsCard({ article, isLoggedIn }) {
+
   const [isSaved, setIsSaved] = useState(isArticleSaved(article.url));
 
   function handleSaveClick() {
@@ -27,14 +28,14 @@ function NewsCard({ article, isLoggedIn }) {
         className="card__image"
       />
 
-      <button
-        className={`card__save-button ${
-          isSaved ? "card__save-button_active" : ""
-        }`}
-        type="button"
-        onClick={handleSaveClick}
-        aria-label="Save article"
-      />
+<button
+  className={`card__save-button ${
+    isSaved ? "card__save-button_active" : ""
+  }`}
+  type="button"
+  onClick={handleSaveClick}
+  aria-label="Save article"
+/>
 
       <div className="card__content">
         <p className="card__date">
