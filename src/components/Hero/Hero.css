@@ -87,16 +87,12 @@
     border-bottom-color: #000;
   }
   
-  .header__content {
-    height: 80px;
-    padding: 0 104px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-bottom: 1px solid #ededed;
+  .hero__content {
+    position: relative;
     z-index: 1;
-    position: absolute;
-    width: 100%;
+    max-width: 608px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    padding-top: 80px;
   }
-  

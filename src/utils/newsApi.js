@@ -16,3 +16,4 @@ export function getArticles(keyword) {
     return res.json();
   });
 }
+

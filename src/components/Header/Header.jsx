@@ -15,12 +15,6 @@ function Header({
 
   const isSavedPage = location.pathname === "/saved-news";
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!keyword.trim()) return;
-    onSearch(keyword);
-  }
-
   return (
     <header className={`header ${isSavedPage ? "header_saved" : ""}`}>
         <div className="header__content">

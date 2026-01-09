@@ -2,32 +2,55 @@ import "./Main.css";
 import React from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
-import NotFound from "../NotFound/NotFound";
 import Hero from "../Hero/Hero";
+import { getArticles } from "../../utils/newsApi";
 
-function Main({
-  isSavedPage,
-  keyword,
-  setKeyword,
-  handleSubmit,
-  articles,
-  isLoading,
-  savedArticles,
-}) {
+function Main({ isSavedPage }) {
+  // ---------- STATE ----------
+  const [keyword, setKeyword] = React.useState("");
+  const [articles, setArticles] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [visibleCount, setVisibleCount] = React.useState(3);
 
+  // ---------- HANDLERS ----------
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!keyword.trim()) {
+      return;
+    }
+
+    setIsLoading(true);
+
+   
+      getArticles(keyword)
+      .then((res) => {
+        setArticles(res.articles);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
+  // ---------- RENDER ----------
   return (
     <main className="main">
+      {/* HERO (only on main page) */}
       {!isSavedPage && (
         <Hero
           keyword={keyword}
           setKeyword={setKeyword}
           handleSubmit={handleSubmit}
         />
-)}
+      )}
 
+      {/* PRELOADER */}
       {isLoading && <Preloader />}
 
+      {/* SEARCH RESULTS */}
       {articles && articles.length > 0 && (
         <section className="search-results">
           <h2 className="search-results__title">Search results</h2>
@@ -38,13 +61,12 @@ function Main({
                 key={index}
                 article={article}
                 isLoggedIn={false}
-                onSave={onSaveArticle}
               />
             ))}
           </ul>
 
           {visibleCount < articles.length && (
-            <div className="search-wrapper">
+            <div className="search-results__button-wrapper">
               <button
                 className="search-results__button"
                 onClick={() => setVisibleCount(visibleCount + 3)}
@@ -55,6 +77,8 @@ function Main({
           )}
         </section>
       )}
+
+      {/* ABOUT THE AUTHOR */}
       <section className="author">
         <div className="author__container">
           <div className="author__avatar">
@@ -63,6 +87,7 @@ function Main({
               <span className="author__eye author__eye_right"></span>
               <img
                 src="/src/assets/authorsmile.svg"
+                alt="smile"
                 className="author__smile"
               />
             </div>
@@ -73,6 +98,7 @@ function Main({
               Put an image of yourself here.
             </p>
           </div>
+
           <div className="author__content">
             <h2 className="author__title">About the author</h2>
 
