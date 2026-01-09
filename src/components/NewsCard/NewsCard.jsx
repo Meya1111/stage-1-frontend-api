@@ -6,7 +6,19 @@ import {
   isArticleSaved,
 } from "../../utils/savedArticles.js";
 
-function NewsCard({ article, isLoggedIn, onSave }) {
+function NewsCard({ article, isLoggedIn }) {
+  const [isSaved, setIsSaved] = useState(isArticleSaved(article.url));
+
+  function handleSaveClick() {
+    if (isSaved) {
+      removeSavedArticleByUrl(article.url);
+      setIsSaved(false);
+    } else {
+      addSavedArticle(article);
+      setIsSaved(true);
+    }
+  }
+
   return (
     <li className="card">
       <img
@@ -16,9 +28,11 @@ function NewsCard({ article, isLoggedIn, onSave }) {
       />
 
       <button
-        className="card__save-button"
+        className={`card__save-button ${
+          isSaved ? "card__save-button_active" : ""
+        }`}
         type="button"
-        onClick={() => onSave(article)}
+        onClick={handleSaveClick}
         aria-label="Save article"
       />
 

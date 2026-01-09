@@ -1,131 +1,136 @@
 .main {
-    width: 100%;
-    overflow: visible;
-  }
-  
-  .author {
-    background-color: #FFFFFF;
-    padding: 80px 0;
-  }
-  
-  .author__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-  
-    display: flex;
-    align-items: center;
-    gap: 56px;
-  }
-  
-  .author__avatar {
-    width: 464px;
-    height: 464px;
-    border-radius: 50%;
-    background-color: #949494;
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .author__avatar-text {
-    margin: 0;
-    color: #FFFFFF;
-    font-size: 20px;
-    line-height: 100%;
-    font-family: Roboto;
-  }
-  
-  .author__content {
-    max-width: 600px;
-  }
-  
-  .author__title {
-    margin: 0 0 24px;
-    font-size: 40px;
-    font-weight: 400;
-    color: #1a1b22;
-  }
-  
-  .author__text {
-    margin: 0 0 16px;
-    font-size: 18px;
-    line-height: 24px;
-    color: #1a1b22;
-  }
+  width: 100%;
+  overflow: visible;
+}
 
-  .author__smiley {
-    position: relative;
-    width: 58px;
-    height: 58px;
-    border: 2px solid #FFFFFF;
-    border-radius: 50%;
-    margin-bottom: 16px;
-  }
-  
-  .author__eye {
-    position: absolute;
-    top: 18px;
-    width: 6px;
-    height: 6px;
-    background-color: #ffffff;
-    border-radius: 50%;
-  }
-  
-  .author__eye_left {
-    left: 18px;
-  }
-  
-  .author__eye_right {
-    right: 18px;
-  }
-  
-  .author__smile {
-    position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 21px;
-    height: auto;
-  }
-  
-  .search-results__title {
-   font-family: Roboto Slab;
-   font-weight: 370;
-   font-size: 40px;
-   line-height: 46px;
-   letter-spacing: 0px;
-   margin: 0 0 42px;
-  }
+.author {
+  background-color: #ffffff;
+  padding: 80px 0;
+}
 
-  .search-results {
-    max-width: 1280px;
-    margin: auto;
-    padding: 0 21px;
-    margin-top: 70px;
-  }
+.author__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 
-  .search-results__button {
-    width: 288px;
-    height: 64px;
-    border: none;
-    border-radius: 32px;
-    background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
 
-    
-  }
- 
-  .search-results__button-wrapper {
-    margin-bottom: 96px;
-  }
+.author__avatar {
+  width: 464px;
+  height: 464px;
+  border-radius: 50%;
+  background-color: #949494;
 
-  .search-wrapper {
-    height: 208px;
-    width: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center; 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.author__avatar-text {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 100%;
+  font-family: Roboto;
+}
+
+.author__content {
+  max-width: 600px;
+}
+
+.author__title {
+  margin: 0 0 24px;
+  font-size: 40px;
+  font-weight: 400;
+  color: #1a1b22;
+}
+
+.author__text {
+  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+}
+
+.author__smiley {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.author__eye {
+  position: absolute;
+  top: 18px;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.author__eye_left {
+  left: 18px;
+}
+
+.author__eye_right {
+  right: 18px;
+}
+
+.author__smile {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 21px;
+  height: auto;
+}
+
+.search-results__title {
+  font-family: Roboto Slab;
+  font-weight: 370;
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: 0px;
+  margin: 0 0 42px;
+}
+
+.search-results {
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 21px;
+  margin-top: 70px;
+}
+
+.search-results__button {
+  width: 288px;
+  height: 64px;
+  border: none;
+  border-radius: 32px;
+  background-color: #ffffff;
+}
+
+.search-results__button-wrapper {
+  margin-bottom: 96px;
+  justify-content: center;
+  display: flex;
+  margin-top: 60px;
+}
+
+.search-wrapper {
+  height: 208px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.search-results__button:hover {
+  background-color: rgba(0, 0, 0, 0.1); 
+}

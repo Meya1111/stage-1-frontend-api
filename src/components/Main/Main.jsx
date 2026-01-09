@@ -4,15 +4,22 @@ import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import Hero from "../Hero/Hero";
 import { getArticles } from "../../utils/newsApi";
+import { addSavedArticle } from "../../utils/savedArticles";
 
 function Main({ isSavedPage }) {
-  // ---------- STATE ----------
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [visibleCount, setVisibleCount] = React.useState(3);
 
-  // ---------- HANDLERS ----------
+  function onSaveArticle(article) {
+    console.log("Saving article:", article);
+  }
+
+function handleSaveArticle(article) {
+  addSavedArticle(article);
+}
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -22,8 +29,7 @@ function Main({ isSavedPage }) {
 
     setIsLoading(true);
 
-   
-      getArticles(keyword)
+    getArticles(keyword)
       .then((res) => {
         setArticles(res.articles);
       })
@@ -35,10 +41,8 @@ function Main({ isSavedPage }) {
       });
   }
 
-  // ---------- RENDER ----------
   return (
     <main className="main">
-      {/* HERO (only on main page) */}
       {!isSavedPage && (
         <Hero
           keyword={keyword}
@@ -47,21 +51,15 @@ function Main({ isSavedPage }) {
         />
       )}
 
-      {/* PRELOADER */}
       {isLoading && <Preloader />}
 
-      {/* SEARCH RESULTS */}
       {articles && articles.length > 0 && (
         <section className="search-results">
           <h2 className="search-results__title">Search results</h2>
 
           <ul className="cards">
             {articles.slice(0, visibleCount).map((article, index) => (
-              <NewsCard
-                key={index}
-                article={article}
-                isLoggedIn={false}
-              />
+              <NewsCard key={index} article={article} isLoggedIn={false} onSave={onSaveArticle} />
             ))}
           </ul>
 
@@ -78,7 +76,6 @@ function Main({ isSavedPage }) {
         </section>
       )}
 
-      {/* ABOUT THE AUTHOR */}
       <section className="author">
         <div className="author__container">
           <div className="author__avatar">
