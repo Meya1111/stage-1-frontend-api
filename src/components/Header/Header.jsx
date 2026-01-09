@@ -23,7 +23,6 @@ function Header({
 
   return (
     <header className={`header ${isSavedPage ? "header_saved" : ""}`}>
-      <div className="header__overlay">
         <div className="header__content">
           <p className="header__logo">NewsExplorer</p>
 
@@ -63,7 +62,6 @@ function Header({
             )}
           </nav>
         </div>
-      </div>
     </header>
   );
 }

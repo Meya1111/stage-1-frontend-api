@@ -2,6 +2,7 @@ import "../Hero/Hero.css";
 
 function Hero({ keyword, setKeyword, handleSubmit }) {
   return (
+    <div className="header__overlay">
     <div className="header__hero">
       <h1 className="header__title">
         What's going on in <br />
@@ -25,6 +26,7 @@ function Hero({ keyword, setKeyword, handleSubmit }) {
           Search
         </button>
       </form>
+    </div>
     </div>
   );
 }
