@@ -1,11 +1,15 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { getSavedArticles, removeSavedArticleByUrl } from "../../utils/savedArticles";
 
 export default function SavedArticles({
   currentUserName = "User",
-  savedArticles
 }) {
  
-  const saved = savedArticles || [];
+  const [saved, setSaved] = useState([]);
+
+  useEffect(() => {
+    setSaved(getSavedArticles());
+  }, []);
 
   const keywordsLine = useMemo(() => {
     const keywords = saved

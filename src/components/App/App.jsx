@@ -9,7 +9,7 @@ import { getArticles } from "../../utils/newsApi";
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import SavedArticles from "../SavedArticles/SavedArticles";
+import SavedArticles from "../../components/SavedArticles/SavedArticles";
 import { useLocation } from "react-router-dom";
 
 
