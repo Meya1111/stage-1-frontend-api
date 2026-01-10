@@ -89,7 +89,8 @@
 }
 
 .card__delete-icon {
-  filter: brightness(1) saturate(0);
+  display: block;
+  filter: brightness(1);
   transition: filter 0.2s ease;
 }
 
