@@ -13,7 +13,6 @@ import SavedArticles from "../../components/SavedArticles/SavedArticles";
 import { useLocation } from "react-router-dom";
 
 function App() {
-
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-news";
   const [keyword, setKeyword] = React.useState("");
@@ -102,21 +101,22 @@ function App() {
           path="/"
           element={
             <Main
-            isSavedPage={isSavedPage}
-            keyword={keyword}
-            setKeyword={setKeyword}
-            handleSubmit={handleSearch}
-            articles={articles}
-            isLoading={isLoading}
-            savedArticles={savedArticles}
-          />
+              isSavedPage={isSavedPage}
+              // articles={articles}
+              // isLoading={isLoading}
+              isLoggedIn={isLoggedIn}
+              onSignInClick={openLogin}
+            />
           }
         />
 
         <Route
           path="/saved-news"
           element={
-            <SavedArticles currentUserName={currentUser?.name || "User"}  savedArticles={savedArticles}/>
+            <SavedArticles
+              currentUserName={currentUser?.name || "User"}
+              savedArticles={savedArticles}
+            />
           }
         />
       </Routes>

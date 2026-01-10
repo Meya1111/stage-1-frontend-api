@@ -6,11 +6,15 @@ import {
   isArticleSaved,
 } from "../../utils/savedArticles.js";
 
-function NewsCard({ article, isLoggedIn }) {
-
+function NewsCard({ article, isLoggedIn, onSave }) {
   const [isSaved, setIsSaved] = useState(isArticleSaved(article.url));
 
   function handleSaveClick() {
+    if (!isLoggedIn) {
+      onSave();
+      return;
+    }
+
     if (isSaved) {
       removeSavedArticleByUrl(article.url);
       setIsSaved(false);
@@ -28,14 +32,16 @@ function NewsCard({ article, isLoggedIn }) {
         className="card__image"
       />
 
-<button
-  className={`card__save-button ${
-    isSaved ? "card__save-button_active" : ""
-  }`}
-  type="button"
-  onClick={handleSaveClick}
-  aria-label="Save article"
-/>
+      {!isLoggedIn ? <button type="buttton">Sign in to save</button> : null}
+
+      <button
+        className={`card__save-button ${
+          isSaved ? "card__save-button_active" : ""
+        }`}
+        type="button"
+        onClick={handleSaveClick}
+        aria-label="Save article"
+      />
 
       <div className="card__content">
         <p className="card__date">

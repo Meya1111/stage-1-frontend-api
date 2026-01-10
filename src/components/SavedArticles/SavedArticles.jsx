@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { getSavedArticles, removeSavedArticleByUrl } from "../../utils/savedArticles";
+import "../SavedArticles/SavedArticles.css";
 
 export default function SavedArticles({
   currentUserName = "User",

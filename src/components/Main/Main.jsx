@@ -6,7 +6,7 @@ import Hero from "../Hero/Hero";
 import { getArticles } from "../../utils/newsApi";
 import { addSavedArticle } from "../../utils/savedArticles";
 
-function Main({ isSavedPage }) {
+function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -15,10 +15,6 @@ function Main({ isSavedPage }) {
   function onSaveArticle(article) {
     console.log("Saving article:", article);
   }
-
-function handleSaveArticle(article) {
-  addSavedArticle(article);
-}
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -59,7 +55,12 @@ function handleSaveArticle(article) {
 
           <ul className="cards">
             {articles.slice(0, visibleCount).map((article, index) => (
-              <NewsCard key={index} article={article} isLoggedIn={false} onSave={onSaveArticle} />
+              <NewsCard
+                key={index}
+                article={article}
+                isLoggedIn={isLoggedIn}
+                onSave={onSaveArticle}
+              />
             ))}
           </ul>
 
