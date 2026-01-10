@@ -17,7 +17,7 @@ function Header({
 
   return (
     <header className={`header ${isSavedPage ? "header_saved" : ""}`}>
-        <div className="header__content">
+        <div className="header__content header__content_saved">
           <p className="header__logo">NewsExplorer</p>
 
           <nav className="header__nav">
