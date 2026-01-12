@@ -1,5 +1,7 @@
 .saved {
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
 
 .saved__hero {
@@ -20,6 +22,7 @@
   color: #1a1b2280;
   margin-bottom: 28px;
   padding-top: 40px;
+  line-height: 24px;
 }
 
 .saved__count {

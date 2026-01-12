@@ -44,7 +44,9 @@ export default function SavedArticles({ currentUserName = "User" }) {
           <p className="saved__title">Saved articles</p>
 
           <h1 className="saved__count">
-            {currentUserName}, you have {saved.length} saved articles
+            {currentUserName},&nbsp;you&nbsp;have&nbsp;{saved.length}&nbsp;saved
+            <br />
+            articles
           </h1>
 
           {keywordsLine && (
