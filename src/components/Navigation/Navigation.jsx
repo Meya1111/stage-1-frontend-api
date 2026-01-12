@@ -1,14 +1,28 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../Header/Header.css";
 
 function Navigation({ onSignInClick }) {
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/saved-news">Saved articles</Link>
-
-      <button onClick={onSignInClick}>
-        Sign In
-      </button>
+      <NavLink
+        to="/"
+        end
+        className={({ isActive }) =>
+          `header__link ${isActive ? "header__link_active" : ""}`
+        }
+      >
+        Home
+      </NavLink>
+      |{" "}
+      <NavLink
+        to="/saved-news"
+        className={({ isActive }) =>
+          `header__link ${isActive ? "header__link_active" : ""}`
+        }
+      >
+        Saved articles
+      </NavLink>
+      <button onClick={onSignInClick}>Sign In</button>
     </nav>
   );
 }
