@@ -153,3 +153,50 @@
 .saved__keywords span {
   font-weight: 700;
 }
+
+@media screen and (max-width: 480px) {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .saved__hero {
+    padding: 16px;
+  }
+
+  .saved__count {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .saved__hero {
+    padding: 16px;
+  }
+
+  .saved__count {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card__delete-button {
+    width: 32px;
+    height: 32px;
+  }
+}
