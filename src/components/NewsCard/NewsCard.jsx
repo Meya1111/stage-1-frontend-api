@@ -32,16 +32,18 @@ function NewsCard({ article, isLoggedIn, onSave }) {
         className="card__image"
       />
 
-      {!isLoggedIn ? <button type="buttton">Sign in to save</button> : null}
-
       <button
         className={`card__save-button ${
           isSaved ? "card__save-button_active" : ""
         }`}
         type="button"
-        onClick={handleSaveClick}
         aria-label="Save article"
-      />
+        onClick={handleSaveClick}
+      >
+        {!isLoggedIn && (
+          <span className="card__save-tooltip">Sign in to save articles</span>
+        )}
+      </button>
 
       <div className="card__content">
         <p className="card__date">
