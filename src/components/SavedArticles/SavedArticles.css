@@ -121,3 +121,35 @@
 
   transition: opacity 0.2s ease;
 }
+
+.card__image-wrap {
+  position: relative;
+}
+
+.card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+
+  padding: 8px 12px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+
+  color: #000;
+  z-index: 2;
+}
+
+.saved__keywords {
+  margin-top: 16px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+}
+
+.saved__keywords span {
+  font-weight: 700;
+}

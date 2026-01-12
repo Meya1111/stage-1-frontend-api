@@ -92,10 +92,10 @@
 
   .card__save-tooltip {
     position: absolute;
-    right: 48px;  /* puts pill to the LEFT of icon */
+    right: 48px;  
     top: 0;
   
-    height: 40px;           /* matches icon height */
+    height: 40px;           
     display: flex;
     align-items: center;
   
@@ -111,7 +111,6 @@
   
     white-space: nowrap;
   
-    /* hidden until hover */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

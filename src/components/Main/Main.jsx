@@ -60,6 +60,7 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
                 article={article}
                 isLoggedIn={isLoggedIn}
                 onSave={onSaveArticle}
+                keyword={keyword}
               />
             ))}
           </ul>

@@ -6,7 +6,7 @@ import {
   isArticleSaved,
 } from "../../utils/savedArticles.js";
 
-function NewsCard({ article, isLoggedIn, onSave }) {
+function NewsCard({ article, isLoggedIn, onSave, keyword }) {
   const [isSaved, setIsSaved] = useState(isArticleSaved(article.url));
 
   function handleSaveClick() {
@@ -19,7 +19,7 @@ function NewsCard({ article, isLoggedIn, onSave }) {
       removeSavedArticleByUrl(article.url);
       setIsSaved(false);
     } else {
-      addSavedArticle(article);
+      addSavedArticle(article, keyword);
       setIsSaved(true);
     }
   }

@@ -102,8 +102,6 @@ function App() {
           element={
             <Main
               isSavedPage={isSavedPage}
-              // articles={articles}
-              // isLoading={isLoading}
               isLoggedIn={isLoggedIn}
               onSignInClick={openLogin}
             />
