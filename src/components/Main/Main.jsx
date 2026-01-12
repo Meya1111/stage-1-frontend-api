@@ -4,13 +4,15 @@ import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import Hero from "../Hero/Hero";
 import { getArticles } from "../../utils/newsApi";
-import { addSavedArticle } from "../../utils/savedArticles";
+import { addSavedArticle } from "../../utils/savedArticles"; 
+import notFoundIcon from "../../assets/not-found.svg";
 
 function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [visibleCount, setVisibleCount] = React.useState(3);
+  const [isNothingFound, setIsNothingFound] = React.useState(false);
 
   function onSaveArticle(article) {
     console.log("Saving article:", article);
@@ -23,11 +25,20 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
       return;
     }
 
+    setIsNothingFound(false);
+    setIsLoading(true);
+
     setIsLoading(true);
 
     getArticles(keyword)
       .then((res) => {
-        setArticles(res.articles);
+        if (res.articles.length === 0) {
+          setIsNothingFound(true);
+          setArticles([]);
+        } else {
+          setArticles(res.articles);
+          setIsNothingFound(false);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -48,6 +59,18 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
       )}
 
       {isLoading && <Preloader />}
+      {!isLoading && isNothingFound && (
+        <section className="not-found">
+          <img
+            src={notFoundIcon}
+            alt="Nothing found"
+            className="not-found__icon"
+          />
+          <h2 className="not-found__title"></h2>
+          <p className="not-found__text">
+          </p>
+        </section>
+      )}
 
       {articles && articles.length > 0 && (
         <section className="search-results">
