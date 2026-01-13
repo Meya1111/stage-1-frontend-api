@@ -37,3 +37,16 @@
   text-transform: uppercase;
   font-size: 14px;
 }
+
+@media screen and (max-width: 480px) {
+  .cards {
+    width: 224;
+    height: 420;
+    opacity: 1;
+    top: 506px;
+    left: 40px;
+    
+  }
+}
+
+
