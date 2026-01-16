@@ -87,8 +87,6 @@
   }
 
   .card__save-button:hover {
-    opacity: 0.9;
-    fill: #000;
   }
 
   .card__save-tooltip {

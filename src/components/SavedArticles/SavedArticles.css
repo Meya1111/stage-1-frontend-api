@@ -95,12 +95,12 @@
 
 .card__delete-icon {
   display: block;
-  filter: brightness(1);
+ 
   transition: filter 0.2s ease;
 }
 
 .card__delete-button:hover .card__delete-icon {
-  filter: brightness(0);
+    content: url(../../assets/blacktrash2.svg);
 }
 
 .card__delete-tooltip {

@@ -9,9 +9,9 @@ import deleteIcon from "../../assets/deletebtn.svg";
 export default function SavedArticles({ currentUserName = "User" }) {
   const [saved, setSaved] = useState([]);
 
-  useEffect(() => {
-    setSaved(getSavedArticles());
-  }, []);
+ useEffect(() => {
+  setSaved(getSavedArticles(currentUserName));
+}, [currentUserName]);
 
   const keywordsLine = useMemo(() => {
     const keywords = saved.map((a) => a.keyword).filter(Boolean);
