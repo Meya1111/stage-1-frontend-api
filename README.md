@@ -15,11 +15,11 @@ News Explorer is a responsive web application that allows users to search for ne
 
 ## 📥 How to Download
 ```bash
-git clone https://github.com/Meya111/stage-1-frontend-api.git
+git clone https://github.com/Meya1111/stage-1-frontend-api.git
 cd stage-1-frontend-api
 
 ## 🔗 Live Demo
-https://meya111.github.io/stage-1-frontend-api/
+https://meya1111.github.io/stage-1-frontend-api/
 
  ## Project Pitch Video
  

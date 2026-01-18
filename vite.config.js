@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: "/stage-1-frontend-api/",
-});
+  base: mode === "production" ? "/stage-1-frontend-api/" : "/",
+}));

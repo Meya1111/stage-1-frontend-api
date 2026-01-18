@@ -6,6 +6,7 @@ import Hero from "../Hero/Hero";
 import { getArticles } from "../../utils/newsApi";
 import { addSavedArticle } from "../../utils/savedArticles"; 
 import notFoundIcon from "../../assets/not-found.svg";
+import authorSmile from "../../assets/authorsmile.svg";
 
 function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
   const [keyword, setKeyword] = React.useState("");
@@ -108,7 +109,7 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
               <span className="author__eye author__eye_left"></span>
               <span className="author__eye author__eye_right"></span>
               <img
-                src="/src/assets/authorsmile.svg"
+                src={authorSmile}
                 alt="smile"
                 className="author__smile"
               />

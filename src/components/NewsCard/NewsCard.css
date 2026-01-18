@@ -86,9 +86,6 @@
     background-image: url("../../assets/Card-activebtn.svg");
   }
 
-  .card__save-button:hover {
-  }
-
   .card__save-tooltip {
     position: absolute;
     right: 48px;  
@@ -123,5 +120,12 @@
     visibility: visible;
   }
   
+@media screen and (max-width: 767px) {
+  .card_delete-button {
+    top: 16px;
+    right: 16px;
+    left: auto;
+  }
+}
 
  

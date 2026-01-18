@@ -49,4 +49,23 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .cards {
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: auto;
+    top: auto;
+    left: auto;
+    padding: 0 16px;
+    gap: 16px;
+  }
+}
 
+@media screen and (max-width: 767px) {
+  .card__image,
+  .card__image-wrapper img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+}
