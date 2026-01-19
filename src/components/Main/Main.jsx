@@ -77,7 +77,7 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
         <section className="search-results">
           <h2 className="search-results__title">Search results</h2>
 
-          <ul className="cards">
+          <ul className="cards cards--main">
             {articles.slice(0, visibleCount).map((article, index) => (
               <NewsCard
                 key={index}

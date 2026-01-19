@@ -35,7 +35,7 @@ function NewsCard({ article, isLoggedIn, onSave, keyword }) {
       <button
         className={`card__save-button ${
           isSaved ? "card__save-button_active" : ""
-        }`}
+        } ${!isLoggedIn ? "card__save-button_disabled" : ""}`}
         type="button"
         aria-label="Save article"
         onClick={handleSaveClick}

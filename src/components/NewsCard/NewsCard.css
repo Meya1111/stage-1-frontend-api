@@ -76,6 +76,7 @@
   
     cursor: pointer;
     z-index: 2; 
+    box-sizing: contain;
   }
   
   .card__save-button {
@@ -84,6 +85,11 @@
   
   .card__save-button_active {
     background-image: url("../../assets/Card-activebtn.svg");
+  }
+  
+  .card__save-button_disabled:hover {
+    background-image: url("../../assets/blackbookmark.svg");
+    background-size: 28px 30px;
   }
 
   .card__save-tooltip {
@@ -118,8 +124,10 @@
   .card__save-button:hover .card__save-tooltip {
     opacity: 1;
     visibility: visible;
+
   }
   
+
 
 @media screen and (max-width: 767px) {
   .card_delete-button {
