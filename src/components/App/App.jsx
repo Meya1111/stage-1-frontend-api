@@ -11,6 +11,12 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import SavedArticles from "../../components/SavedArticles/SavedArticles";
 import { useLocation } from "react-router-dom";
+import {
+  getSavedArticles,
+  removeSavedArticleByUrl,
+  addSavedArticle,
+} from "../../utils/savedArticles";
+
 
 function App() {
   const location = useLocation();
@@ -46,17 +52,24 @@ function App() {
   }
 
   function handleSaveArticle(article) {
-    setSavedArticles((prev) => {
-      const exists = prev.some((item) => item.url === article.url);
-      if (exists) return prev;
-      return [...prev, article];
-    });
+    if (!currentUser?.name) return;
+
+    const next = addSavedArticle(currentUser.name, article);
+    setSavedArticles(next);
+  }
+
+  function handleDeleteArticle(url) {
+    if (!currentUser?.name) return;
+
+    const next = removeSavedArticleByUrl(currentUser.name, url);
+    setSavedArticles(next);
   }
 
   const handleLogin = (email) => {
-    setCurrentUser({
-      name: email.split("@")[0],
-    });
+    const username = email.split("@")[0];
+
+    setCurrentUser({ name: username });
+    setSavedArticles(getSavedArticles(username));
     setIsLoggedIn(true);
     closeAllModals();
   };
@@ -64,6 +77,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
+    setSavedArticles([]);
   };
 
   const openLogin = () => {
@@ -104,6 +118,8 @@ function App() {
               isSavedPage={isSavedPage}
               isLoggedIn={isLoggedIn}
               onSignInClick={openLogin}
+              onSaveArticle={handleSaveArticle}
+              savedArticles={savedArticles}
             />
           }
         />
@@ -114,6 +130,7 @@ function App() {
             <SavedArticles
               currentUserName={currentUser?.name || "User"}
               savedArticles={savedArticles}
+              onDelete={handleDeleteArticle}
             />
           }
         />

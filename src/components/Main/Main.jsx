@@ -4,20 +4,15 @@ import NewsCard from "../NewsCard/NewsCard";
 import Preloader from "../Preloader/Preloader";
 import Hero from "../Hero/Hero";
 import { getArticles } from "../../utils/newsApi";
-import { addSavedArticle } from "../../utils/savedArticles"; 
 import notFoundIcon from "../../assets/not-found.svg";
 import authorSmile from "../../assets/authorsmile.svg";
 
-function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
+function Main({ isSavedPage, isLoggedIn, onSignInClick, onSaveArticle, saveArticles }) {
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [visibleCount, setVisibleCount] = React.useState(3);
   const [isNothingFound, setIsNothingFound] = React.useState(false);
-
-  function onSaveArticle(article) {
-    console.log("Saving article:", article);
-  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -85,6 +80,7 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick }) {
                 isLoggedIn={isLoggedIn}
                 onSave={onSaveArticle}
                 keyword={keyword}
+                onSignInClick={onSignInClick}
               />
             ))}
           </ul>

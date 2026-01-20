@@ -1,27 +1,34 @@
 import "./NewsCard.css";
 import { useEffect, useState } from "react";
-import {
-  addSavedArticle,
-  removeSavedArticleByUrl,
-  isArticleSaved,
-} from "../../utils/savedArticles.js";
+import { isArticleSaved } from "../../utils/savedArticles.js";
 
-function NewsCard({ article, isLoggedIn, onSave, keyword }) {
-  const [isSaved, setIsSaved] = useState(isArticleSaved(article.url));
+function NewsCard({
+  article,
+  isLoggedIn,
+  onSave,
+  keyword,
+  currentUserName,
+  onSignInClick,
+}) {
 
-  function handleSaveClick() {
-    if (!isLoggedIn) {
-      onSave();
-      return;
+  const [isSaved, setIsSaved] = useState(() =>
+    isArticleSaved(currentUserName, article.url)
+  );
+
+  useEffect(() => {
+    setIsSaved(isArticleSaved(currentUserName, article.url));
+  }, [currentUserName, article.url, isLoggedIn]);
+
+  function handleSaveClick(e) {
+    e.stopPropagation();
+  
+    if (!isLoggedIn) return;
+  
+    if (typeof onSave === "function") {
+      onSave(article, keyword);
     }
-
-    if (isSaved) {
-      removeSavedArticleByUrl(article.url);
-      setIsSaved(false);
-    } else {
-      addSavedArticle(article, keyword);
-      setIsSaved(true);
-    }
+  
+    setIsSaved(true);
   }
 
   return (

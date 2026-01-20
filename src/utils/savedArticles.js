@@ -1,8 +1,10 @@
-const STORAGE_KEY = "saved_articles_v1";
+const getUserKey = (username) => `saved_articles_${username || "guest"}`;
 
-export function getSavedArticles() {
+export function getSavedArticles(username) {
+  const key = getUserKey(username);
+
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(key);
     return raw ? JSON.parse(raw) : [];
   } catch (e) {
     console.error("getSavedArticles error:", e);
@@ -10,37 +12,42 @@ export function getSavedArticles() {
   }
 }
 
-export function saveArticles(list) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+export function saveArticles(username, list) {
+  const key = getUserKey(username);
+  localStorage.setItem(key, JSON.stringify(list));
 }
 
-export function isArticleSaved(article) {
-  const saved = getSavedArticles();
-  return saved.some((a) => a.url === article.url);
+export function isArticleSaved(username, url) {
+  if (!username || !url) return false;
+  const saved = getSavedArticles(username);
+  return saved.some((a) => a.url === url);
 }
 
-export function addSavedArticle(article, keyword = "") {
-  const saved = getSavedArticles();
-
+export function addSavedArticle(username, article, keyword = "") {
+  if (!username) return [];
+  const saved = getSavedArticles(username);
 
   if (saved.some((a) => a.url === article.url)) return saved;
 
   const next = [
     {
       ...article,
-      keyword,            
+      keyword,
       savedAt: Date.now(),
     },
     ...saved,
   ];
 
-  saveArticles(next);
+  saveArticles(username, next);
   return next;
 }
 
-export function removeSavedArticleByUrl(url) {
-  const saved = getSavedArticles();
+export function removeSavedArticleByUrl(username, url) {
+  if (!username) return [];
+  const saved = getSavedArticles(username);
+
   const next = saved.filter((a) => a.url !== url);
-  saveArticles(next);
+
+  saveArticles(username, next);
   return next;
 }

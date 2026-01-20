@@ -1,20 +1,17 @@
-import { useMemo, useState, useEffect } from "react";
-import {
-  getSavedArticles,
-  removeSavedArticleByUrl,
-} from "../../utils/savedArticles";
+import { useMemo } from "react";
 import "./SavedArticles.css";
 import deleteIcon from "../../assets/deletebtn.svg";
+import { getSavedArticles } from "../../utils/savedArticles";
+import { removeSavedArticleByUrl } from "../../utils/savedArticles";
 
-export default function SavedArticles({ currentUserName = "User" }) {
-  const [saved, setSaved] = useState([]);
-
- useEffect(() => {
-  setSaved(getSavedArticles(currentUserName));
-}, [currentUserName]);
+export default function SavedArticles({
+  currentUserName = "User",
+  savedArticles = [],
+  onDelete,
+}) {
 
   const keywordsLine = useMemo(() => {
-    const keywords = saved.map((a) => a.keyword).filter(Boolean);
+    const keywords = savedArticles.map((a) => a.keyword).filter(Boolean);
 
     const counts = keywords.reduce((acc, k) => {
       acc[k] = (acc[k] || 0) + 1;
@@ -30,12 +27,7 @@ export default function SavedArticles({ currentUserName = "User" }) {
     if (sorted.length === 2) return `${sorted[0]}, ${sorted[1]}`;
 
     return `${sorted[0]}, ${sorted[1]}, and ${sorted.length - 2} other`;
-  }, [saved]);
-
-  function handleDelete(url) {
-    const next = removeSavedArticleByUrl(url);
-    setSaved(next);
-  }
+  }, [savedArticles]);
 
   return (
     <main className="saved">
@@ -44,7 +36,8 @@ export default function SavedArticles({ currentUserName = "User" }) {
           <p className="saved__title">Saved articles</p>
 
           <h1 className="saved__count">
-            {currentUserName},&nbsp;you&nbsp;have&nbsp;{saved.length}&nbsp;saved
+            {currentUserName},&nbsp;you&nbsp;have&nbsp;
+            {savedArticles.length}&nbsp;saved
             <br />
             articles
           </h1>
@@ -59,7 +52,7 @@ export default function SavedArticles({ currentUserName = "User" }) {
 
       <section className="saved__list">
         <div className="cards">
-          {saved.map((a) => (
+          {savedArticles.map((a) => (
             <article className="card" key={a.url}>
               <div className="card__image-wrap">
                 {a.keyword && (
@@ -70,19 +63,23 @@ export default function SavedArticles({ currentUserName = "User" }) {
                   className="card__delete-button"
                   type="button"
                   aria-label="Remove from saved"
-                  onClick={() => handleDelete(a.url)}
+                  onClick={() => onDelete(a.url)}
                 >
                   <img
                     src={deleteIcon}
                     alt="Remove"
                     className="card__delete-icon"
                   />
-
                   <span className="card__delete-tooltip">
                     Remove from saved
                   </span>
                 </button>
-                <img className="card__image" src={a.urlToImage} alt={a.title} />
+
+                <img
+                  className="card__image"
+                  src={a.urlToImage}
+                  alt={a.title}
+                />
               </div>
 
               <div className="card__content">
