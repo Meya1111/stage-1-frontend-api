@@ -7,12 +7,41 @@ import { getArticles } from "../../utils/newsApi";
 import notFoundIcon from "../../assets/not-found.svg";
 import authorSmile from "../../assets/authorsmile.svg";
 
-function Main({ isSavedPage, isLoggedIn, onSignInClick, onSaveArticle, saveArticles }) {
+function Main({
+  isSavedPage,
+  isLoggedIn,
+  onSignInClick,
+  onSaveArticle,
+  saveArticles,
+  currentUser, 
+}) {
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [visibleCount, setVisibleCount] = React.useState(3);
   const [isNothingFound, setIsNothingFound] = React.useState(false);
+
+  const [avatar, setAvatar] = React.useState(null);
+
+  // ✅ LOAD avatar (FIXED)
+  React.useEffect(() => {
+    if (!isLoggedIn || !currentUser?.name) return;
+
+    const savedAvatar = localStorage.getItem(
+      `avatar-${currentUser.name}`
+    );
+
+    if (savedAvatar) {
+      setAvatar(savedAvatar);
+    }
+  }, [isLoggedIn, currentUser]);
+
+  // ✅ CLEAR avatar on logout (unchanged)
+  React.useEffect(() => {
+    if (!isLoggedIn) {
+      setAvatar(null);
+    }
+  }, [isLoggedIn]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,8 +51,6 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick, onSaveArticle, saveArtic
     }
 
     setIsNothingFound(false);
-    setIsLoading(true);
-
     setIsLoading(true);
 
     getArticles(keyword)
@@ -44,6 +71,28 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick, onSaveArticle, saveArtic
       });
   }
 
+  // ✅ SAVE avatar (FIXED — base64, no blob)
+  function handleAvatarChange(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const base64Image = reader.result;
+      setAvatar(base64Image);
+
+      if (currentUser?.name) {
+        localStorage.setItem(
+          `avatar-${currentUser.name}`,
+          base64Image
+        );
+      }
+    };
+
+    reader.readAsDataURL(file);
+  }
+
   return (
     <main className="main">
       {!isSavedPage && (
@@ -55,6 +104,7 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick, onSaveArticle, saveArtic
       )}
 
       {isLoading && <Preloader />}
+
       {!isLoading && isNothingFound && (
         <section className="not-found">
           <img
@@ -63,8 +113,7 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick, onSaveArticle, saveArtic
             className="not-found__icon"
           />
           <h2 className="not-found__title"></h2>
-          <p className="not-found__text">
-          </p>
+          <p className="not-found__text"></p>
         </section>
       )}
 
@@ -100,23 +149,60 @@ function Main({ isSavedPage, isLoggedIn, onSignInClick, onSaveArticle, saveArtic
 
       <section className="author">
         <div className="author__container">
-          <div className="author__avatar">
-            <div className="author__smiley">
-              <span className="author__eye author__eye_left"></span>
-              <span className="author__eye author__eye_right"></span>
-              <img
-                src={authorSmile}
-                alt="smile"
-                className="author__smile"
+          {isLoggedIn ? (
+            <label className="author__avatar">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleAvatarChange}
+                hidden
               />
-            </div>
 
-            <p className="author__avatar-text">
-              Placeholder image.
-              <br />
-              Put an image of yourself here.
-            </p>
-          </div>
+              {avatar ? (
+                <img
+                  src={avatar}
+                  alt="Author avatar"
+                  className="author__avatar-image"
+                />
+              ) : (
+                <>
+                  <div className="author__smiley">
+                    <span className="author__eye author__eye_left"></span>
+                    <span className="author__eye author__eye_right"></span>
+                    <img
+                      src={authorSmile}
+                      alt="smile"
+                      className="author__smile"
+                    />
+                  </div>
+
+                  <p className="author__avatar-text">
+                    Placeholder image.
+                    <br />
+                    Put an image of yourself here.
+                  </p>
+                </>
+              )}
+            </label>
+          ) : (
+            <div className="author__avatar">
+              <div className="author__smiley">
+                <span className="author__eye author__eye_left"></span>
+                <span className="author__eye author__eye_right"></span>
+                <img
+                  src={authorSmile}
+                  alt="smile"
+                  className="author__smile"
+                />
+              </div>
+
+              <p className="author__avatar-text">
+                Placeholder image.
+                <br />
+                Put an image of yourself here.
+              </p>
+            </div>
+          )}
 
           <div className="author__content">
             <h2 className="author__title">About the author</h2>

@@ -120,6 +120,7 @@ function App() {
               onSignInClick={openLogin}
               onSaveArticle={handleSaveArticle}
               savedArticles={savedArticles}
+              currentUser={currentUser}
             />
           }
         />
