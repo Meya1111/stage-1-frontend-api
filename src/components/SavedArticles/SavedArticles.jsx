@@ -29,7 +29,6 @@ export default function SavedArticles({
     return `${sorted[0]}, ${sorted[1]}, and ${sorted.length - 2} other`;
   }, [savedArticles]);
 
-  console.log(savedArticles)
   return (
     <main className="saved">
       <section className="saved__hero">

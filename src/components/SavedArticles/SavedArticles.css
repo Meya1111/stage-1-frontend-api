@@ -132,7 +132,7 @@
   position: relative;
 }
 
-.card__keyword {
+.saved .card__keyword {
   position: absolute;
   top: 24px;
   left: 24px;
@@ -147,6 +147,7 @@
 
   color: #000;
   z-index: 2;
+  visibility: visible;
 }
 
 .saved__keywords {
