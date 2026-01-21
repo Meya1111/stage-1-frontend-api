@@ -2,6 +2,7 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .saved__hero {
@@ -57,7 +58,6 @@
   background-color: #F5F6F7;
   padding-top: 64px;
   padding-bottom: 64px;
-  visibility: hidden;
 }
 
 .card__delete-button {
