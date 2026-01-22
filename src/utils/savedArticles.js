@@ -23,7 +23,7 @@ export function isArticleSaved(username, url) {
   return saved.some((a) => a.url === url);
 }
 
-export function addSavedArticle(username, article, keyword = "") {
+export function addSavedArticle(username, article, keyword) {
   if (!username) return [];
   const saved = getSavedArticles(username);
 

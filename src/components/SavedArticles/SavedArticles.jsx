@@ -9,10 +9,8 @@ export default function SavedArticles({
   savedArticles = [],
   onDelete,
 }) {
-
   const keywordsLine = useMemo(() => {
-    const keywords = savedArticles.map((a) => a.keyword).filter(Boolean);
-
+    const keywords = savedArticles.map((a) => a.keyword)
     const counts = keywords.reduce((acc, k) => {
       acc[k] = (acc[k] || 0) + 1;
       return acc;
@@ -75,11 +73,7 @@ export default function SavedArticles({
                   </span>
                 </button>
 
-                <img
-                  className="card__image"
-                  src={a.urlToImage}
-                  alt={a.title}
-                />
+                <img className="card__image" src={a.urlToImage} alt={a.title} />
               </div>
 
               <div className="card__content">

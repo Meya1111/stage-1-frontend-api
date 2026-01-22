@@ -23,7 +23,6 @@ function Main({
 
   const [avatar, setAvatar] = React.useState(null);
 
-  // ✅ LOAD avatar (FIXED)
   React.useEffect(() => {
     if (!isLoggedIn || !currentUser?.name) return;
 
@@ -36,7 +35,6 @@ function Main({
     }
   }, [isLoggedIn, currentUser]);
 
-  // ✅ CLEAR avatar on logout (unchanged)
   React.useEffect(() => {
     if (!isLoggedIn) {
       setAvatar(null);
@@ -71,7 +69,6 @@ function Main({
       });
   }
 
-  // ✅ SAVE avatar (FIXED — base64, no blob)
   function handleAvatarChange(e) {
     const file = e.target.files[0];
     if (!file) return;

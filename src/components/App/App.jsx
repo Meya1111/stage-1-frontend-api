@@ -34,6 +34,7 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
 
   function handleSearch(keyword) {
+    setKeyword(keyword);
     setIsLoading(true);
     setIsSearched(true);
 
@@ -51,10 +52,9 @@ function App() {
       });
   }
 
-  function handleSaveArticle(article) {
+  function handleSaveArticle(article, keyword) {
     if (!currentUser?.name) return;
-
-    const next = addSavedArticle(currentUser.name, article);
+    const next = addSavedArticle(currentUser.name, article, keyword);
     setSavedArticles(next);
   }
 
