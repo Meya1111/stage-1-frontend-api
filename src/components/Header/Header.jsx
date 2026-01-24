@@ -23,11 +23,13 @@ function Header({
         <p className="header__logo">NewsExplorer</p>
 
         <button
-          className="header__burger"
+          className={`header__burger ${
+            isSavedPage ? "header__burger_type_black" : ""
+          }`}
           aria-label="Open menu"
           onClick={() => setIsMobileMenuOpen(true)}
         >
-        =
+          =
         </button>
 
         <nav className="header__nav">
@@ -72,61 +74,61 @@ function Header({
 
       {isMobileMenuOpen && (
         <div className="header__help">
-        <div className="header__mobile"> 
+          <div className="header__mobile">
             <div className="header__content header__content_saved">
-            <p className="header__logo">NewsExplorer</p>
+              <p className="header__logo">NewsExplorer</p>
             </div>
-          <button
-            className="header__close"
-            aria-label="Close menu"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            ✕
-          </button>
-
-          <nav className="header__mobile-nav">
             <button
-              onClick={() => {
-                navigate("/");
-                setIsMobileMenuOpen(false);
-              }}
+              className="header__close"
+              aria-label="Close menu"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              Home
+              ✕
             </button>
 
-            {isLoggedIn && (
+            <nav className="header__mobile-nav">
               <button
                 onClick={() => {
-                  navigate("/saved-news");
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                Saved articles
-              </button>
-            )}
-
-            {isLoggedIn ? (
-              <button
-                onClick={() => {
-                  onLogout();
                   navigate("/");
                   setIsMobileMenuOpen(false);
                 }}
               >
-                Log out
+                Home
               </button>
-            ) : (
-              <button
-                onClick={() => {
-                  onSignInClick();
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                Sign in
-              </button>
-            )}
-          </nav>
-        </div>
+
+              {isLoggedIn && (
+                <button
+                  onClick={() => {
+                    navigate("/saved-news");
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  Saved articles
+                </button>
+              )}
+
+              {isLoggedIn ? (
+                <button
+                  onClick={() => {
+                    onLogout();
+                    navigate("/");
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  Log out
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    onSignInClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  Sign in
+                </button>
+              )}
+            </nav>
+          </div>
         </div>
       )}
     </header>

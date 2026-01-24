@@ -149,6 +149,11 @@
   cursor: pointer;
 }
 
+.header__burger_type_black {
+  color: black; 
+}
+
+
 .header__menu-button {
   display: none;
 }
