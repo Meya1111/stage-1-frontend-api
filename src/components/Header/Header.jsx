@@ -71,7 +71,11 @@ function Header({
       </div>
 
       {isMobileMenuOpen && (
-        <div className="header__mobile">
+        <div className="header__help">
+        <div className="header__mobile"> 
+            <div className="header__content header__content_saved">
+            <p className="header__logo">NewsExplorer</p>
+            </div>
           <button
             className="header__close"
             aria-label="Close menu"
@@ -122,6 +126,7 @@ function Header({
               </button>
             )}
           </nav>
+        </div>
         </div>
       )}
     </header>

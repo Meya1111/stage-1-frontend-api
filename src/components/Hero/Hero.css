@@ -88,11 +88,23 @@
   }
   
   .hero__content {
-    position: relative;
+    /* position: relative;
     z-index: 1;
     max-width: 608px;
     margin: 0 auto;
     text-align: center;
     color: #fff;
-    padding-top: 80px;
+    padding-top: 80px; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 80px 416px 88px;
+  }
+
+  @media screen and (max-width: 579px) {
+  .header__hero {
+    padding: 30px 16px 122px;
+    align-items: center;
+  }
+
   }
