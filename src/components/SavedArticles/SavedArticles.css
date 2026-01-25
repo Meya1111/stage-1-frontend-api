@@ -62,7 +62,7 @@
 .card__delete-button {
   opacity: 1;
   top: 24px;
-  left: 336px;
+  right: 24px;
   position: absolute;
   background: none;
   border: none;

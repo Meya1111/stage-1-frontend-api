@@ -5,7 +5,7 @@ import Preloader from "../Preloader/Preloader";
 import Hero from "../Hero/Hero";
 import { getArticles } from "../../utils/newsApi";
 import notFoundIcon from "../../assets/not-found.svg";
-import authorSmile from "../../assets/authorsmile.svg";
+import defaultAuthor from "../../assets/Authorphoto.svg";
 
 function Main({
   isSavedPage,
@@ -13,7 +13,7 @@ function Main({
   onSignInClick,
   onSaveArticle,
   saveArticles,
-  currentUser, 
+  currentUser,
 }) {
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
@@ -21,25 +21,14 @@ function Main({
   const [visibleCount, setVisibleCount] = React.useState(3);
   const [isNothingFound, setIsNothingFound] = React.useState(false);
 
-  const [avatar, setAvatar] = React.useState(null);
+  const [avatar, setAvatar] = React.useState(defaultAuthor);
 
   React.useEffect(() => {
-    if (!isLoggedIn || !currentUser?.name) return;
-
-    const savedAvatar = localStorage.getItem(
-      `avatar-${currentUser.name}`
-    );
-
+    const savedAvatar = localStorage.getItem("author-avatar");
     if (savedAvatar) {
       setAvatar(savedAvatar);
     }
-  }, [isLoggedIn, currentUser]);
-
-  React.useEffect(() => {
-    if (!isLoggedIn) {
-      setAvatar(null);
-    }
-  }, [isLoggedIn]);
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -67,27 +56,6 @@ function Main({
       .finally(() => {
         setIsLoading(false);
       });
-  }
-
-  function handleAvatarChange(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const base64Image = reader.result;
-      setAvatar(base64Image);
-
-      if (currentUser?.name) {
-        localStorage.setItem(
-          `avatar-${currentUser.name}`,
-          base64Image
-        );
-      }
-    };
-
-    reader.readAsDataURL(file);
   }
 
   return (
@@ -146,73 +114,62 @@ function Main({
 
       <section className="author">
         <div className="author__container">
-          {isLoggedIn ? (
-            <label className="author__avatar">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleAvatarChange}
-                hidden
+          <div className="author__avatar">
+            {avatar ? (
+              <img
+                src={avatar}
+                alt="Author avatar"
+                className="author__avatar-image"
               />
+            ) : (
+              <div
+                className="author__placeholder"
+                onClick={() =>
+                  isLoggedIn &&
+                  document.getElementById("author-avatar-input").click()
+                }
+              >
+                <div className="author__smiley">
+                  <span className="author__eye author__eye_left"></span>
+                  <span className="author__eye author__eye_right"></span>
+                  <img
+                    src={authorSmile}
+                    alt="smile"
+                    className="author__smile"
+                  />
+                </div>
 
-              {avatar ? (
-                <img
-                  src={avatar}
-                  alt="Author avatar"
-                  className="author__avatar-image"
-                />
-              ) : (
-                <>
-                  <div className="author__smiley">
-                    <span className="author__eye author__eye_left"></span>
-                    <span className="author__eye author__eye_right"></span>
-                    <img
-                      src={authorSmile}
-                      alt="smile"
-                      className="author__smile"
-                    />
-                  </div>
-
-                  <p className="author__avatar-text">
-                    Placeholder image.
-                    <br />
-                    Put an image of yourself here.
-                  </p>
-                </>
-              )}
-            </label>
-          ) : (
-            <div className="author__avatar">
-              <div className="author__smiley">
-                <span className="author__eye author__eye_left"></span>
-                <span className="author__eye author__eye_right"></span>
-                <img
-                  src={authorSmile}
-                  alt="smile"
-                  className="author__smile"
-                />
+                <p className="author__avatar-text">
+                  Placeholder image.
+                  <br />
+                  Put an image of yourself here.
+                </p>
               </div>
-
-              <p className="author__avatar-text">
-                Placeholder image.
-                <br />
-                Put an image of yourself here.
-              </p>
-            </div>
-          )}
+            )}
+          </div>
 
           <div className="author__content">
             <h2 className="author__title">About the author</h2>
 
             <p className="author__text">
-              This block describes the project author. Here you should indicate
-              your name, what you do, and which development technologies you
-              know.
+              My name is Meya Warrior, and I am a software engineer with
+              experience building modern websites and applications. I work with
+              front-end and back-end development technologies such as HTML, CSS,
+              and JavaScript, and I enjoy bringing ideas to life through clean
+              and functional design.
             </p>
 
             <p className="author__text">
-              You can also talk about your experience with TripleTen, what you
-              learned there, and how you can help potential customers.
+              My experience with TripleTen was a learning journey that involved
+              a lot of problem-solving and moments that were challenging at
+              times. Some concepts were complicated at first, but with
+              consistency, practice, and support from the staff, I was able to
+              catch on and eventually work through them on my own. Through the
+              program, I learned how to build different websites, structure
+              front-end layouts, and set up both front-end and back-end
+              functionality. In the future, I hope to help potential customers
+              by creating user-friendly, reliable websites and continuing to
+              grow as a developer with each project I take on.
             </p>
           </div>
         </div>
