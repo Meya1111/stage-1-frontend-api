@@ -17,6 +17,8 @@
     display: flex;
     flex-direction: column;
     z-index: 0;
+    width: 100%;
+    position: fixed;
   }
 
   .header__user {
@@ -41,7 +43,6 @@
   
   .header_saved {
     background-image: none;
-    background-color: #f5f6f7;
     min-height: auto;
   }
   
@@ -96,7 +97,7 @@
 
   @media screen and (max-width: 579px) {
   .header__hero {
-    padding: 30px 16px 122px;
+    padding: 70px 0 122px;
     align-items: center;
   }
 

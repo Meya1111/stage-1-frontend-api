@@ -29,9 +29,9 @@ function Header({
               isSavedPage ? "header__close_black" : ""
             }`}
             aria-label="Open menu"
-            onClick={() => setIsMobileMenuOpen(true)}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            =
+            {!isMobileMenuOpen? "=" : ""}
           </button>
         </div>
 
@@ -80,7 +80,7 @@ function Header({
           <div className="header__mobile">
             <div className="header__content">
               <div className="header__options">
-                <p className="header__logo">NewsExplorer</p>
+                <p className="header__logo"></p>
 
                 <button
                   className="header__close"

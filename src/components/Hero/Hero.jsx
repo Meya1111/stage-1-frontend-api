@@ -2,7 +2,6 @@ import "../Hero/Hero.css";
 
 function Hero({ keyword, setKeyword, handleSubmit }) {
   return (
-    <div className="header__overlay">
       <div className="header__hero">
         <div className="hero__content">
           <h1 className="header__title">
@@ -29,7 +28,6 @@ function Hero({ keyword, setKeyword, handleSubmit }) {
           </form>
         </div>
       </div>
-    </div>
   );
 }
 

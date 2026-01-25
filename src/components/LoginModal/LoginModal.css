@@ -119,11 +119,16 @@
     .modal__content_auth {
       width: 100%;
       opacity: 1;
-      top: 207px;
-      left: 169px;
+      top: 350px;
       border-width: 1px;
       display: flex;
       flex-direction: column;
       position: fixed;
+      height: 100%;
   }
+
+  .modal__close {
+  right: 0;
+  }
+  
 }
