@@ -206,13 +206,6 @@
   }
 
   .header__overlay {
-    /* position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10; */
   }
 
   .header__mobile-nav-btn {
@@ -279,16 +272,7 @@
     margin-top: 16px;
     padding: 16px;
   }
-  /* .header__mobile-nav button:first-child {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: left;
-    margin-top: 16px;
-    padding: 16px;
-  } */
+
 }
 
 @media screen and (max-width: 579px) {
