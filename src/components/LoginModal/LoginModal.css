@@ -97,6 +97,15 @@
     margin-top: 8px;
     cursor: default;
   }
+
+  .modal__submit_active:hover {
+    background-color: #2664ce;
+    cursor: pointer;
+  }
+
+  .modal__submit_active:active {
+    transform: scale(0.98);
+  }
   
   .modal__switch {
     margin-top: 16px;
@@ -106,6 +115,11 @@
   
   .modal__switch span {
     color: #2f71e5;
+    cursor: pointer;
+  }
+
+  .modal__switch span:hover {
+    color: #2664ce;
     cursor: pointer;
   }
 
