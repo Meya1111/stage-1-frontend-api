@@ -1,8 +1,7 @@
 import "./Header.css";
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import closeIcon from "../../assets/close22.svg";
-import { Link } from "react-router-dom";
 
 function Header({
   onSignInClick,
@@ -32,19 +31,19 @@ function Header({
             aria-label="Open menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {!isMobileMenuOpen? "=" : ""}
+            {!isMobileMenuOpen ? "=" : ""}
           </button>
         </div>
 
         <nav className="header__nav">
-          <button
+          <Link
+            to="/"
             className={`header__link ${
               !isSavedPage ? "header__link_active" : ""
             }`}
-            onClick={() => navigate("/")}
           >
             Home
-          </button>
+          </Link>
 
           {isLoggedIn ? (
             <>
@@ -121,7 +120,7 @@ function Header({
                   </button>
                 )}
               </div>
-              
+
               <div className="header__mobile-nav-options">
                 {isLoggedIn ? (
                   <button

@@ -1,8 +1,6 @@
 import { useMemo } from "react";
 import "./SavedArticles.css";
 import deleteIcon from "../../assets/deletebtn.svg";
-import { getSavedArticles } from "../../utils/savedArticles";
-import { removeSavedArticleByUrl } from "../../utils/savedArticles";
 
 export default function SavedArticles({
   currentUserName = "User",

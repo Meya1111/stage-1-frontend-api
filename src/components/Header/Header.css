@@ -137,6 +137,7 @@
   display: inline-flex;
   align-items: center;
   width: auto;
+  text-decoration: none;
 }
 
 .header__button {

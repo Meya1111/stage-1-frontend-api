@@ -8,7 +8,6 @@ function NewsCard({
   onSave,
   keyword,
   currentUserName,
-  onSignInClick,
 }) {
   const [isSaved, setIsSaved] = useState(() =>
     isArticleSaved(currentUserName, article.url)
