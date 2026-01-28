@@ -2,6 +2,7 @@ import "./Header.css";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import closeIcon from "../../assets/close22.svg";
+import { Link } from "react-router-dom";
 
 function Header({
   onSignInClick,

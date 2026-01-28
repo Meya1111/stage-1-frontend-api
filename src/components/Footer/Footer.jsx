@@ -1,8 +1,8 @@
 import "./Footer.css";
-
 import githubIcon from "../../assets/githubIcon.svg";
 import inIcon from "../../assets/inIcon.svg";
 import linkedinIcon from "../../assets/linkedinIcon.svg";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -10,9 +10,9 @@ function Footer() {
       <p className="footer__copyright">© 2026 Supersite, Powered by News API</p>
 
       <div className="footer__links">
-        <a href="/" className="footer__link">
+        <Link to="/" className="footer__link">
           Home
-        </a>
+        </Link>
 
         <a
           href="https://tripleten.com"
@@ -46,8 +46,7 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="footer__icon-link"
-        >
-        </a>
+        ></a>
       </div>
     </footer>
   );

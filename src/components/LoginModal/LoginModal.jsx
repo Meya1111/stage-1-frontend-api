@@ -1,5 +1,6 @@
 import "./LoginModal.css";
 import { useState } from "react";
+import closeIcon from "../../assets/close22.svg";
 
 function LoginModal({ isOpen, onClose, onSwitch, onLogin }) {
   if (!isOpen) return null;
@@ -22,8 +23,9 @@ function LoginModal({ isOpen, onClose, onSwitch, onLogin }) {
           onClick={onClose}
           aria-label="Close modal"
         >
-          x
+          <img src={closeIcon} alt="close" className="modal__close-icon" />
         </button>
+
         <h2 className="modal__title">Sign in</h2>
 
         <label className="modal__label">
@@ -71,7 +73,7 @@ function LoginModal({ isOpen, onClose, onSwitch, onLogin }) {
               setLoginError("Email and password required");
               return;
             }
-          
+
             onLogin(email);
             onClose();
           }}
