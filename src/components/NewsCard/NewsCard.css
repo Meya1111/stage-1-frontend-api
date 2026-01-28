@@ -4,7 +4,7 @@
   margin: 0 auto;
   max-width: 1232px;
   display: grid;
-  grid-template-columns: repeat(3, 400px);
+  grid-template-columns: repeat(3, minmax(224px, 400px));
   column-gap: 16px;
   row-gap: 16px;
   justify-content: center;
@@ -12,7 +12,6 @@
 
 .card {
   position: relative;
-  width: 400px;
   height: 100%;
   background-color: #ffffff;
   border-radius: 16px;
@@ -125,10 +124,10 @@
   }
 }
 
-@media screen and (max-width: 1024px) and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   .cards {
-    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+    grid-template-columns: repeat(auto-fill minmax(224px, 400px));
   }
 
 }

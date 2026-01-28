@@ -28,6 +28,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  min-width: 330px;
 }
 
 .author__avatar-text {
@@ -152,5 +153,9 @@
 
   .author__image {
     margin-bottom: 24px;
+  }
+
+  .author__avatar {
+    min-width: unset;
   }
 }
