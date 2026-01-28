@@ -116,6 +116,11 @@
   visibility: visible;
 }
 
+.card__link {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media screen and (max-width: 767px) {
   .card_delete-button {
     top: 16px;

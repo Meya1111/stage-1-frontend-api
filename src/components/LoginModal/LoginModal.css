@@ -43,6 +43,12 @@
     font-size: 32px;
   }
 
+  .modal__close:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
   .modal__title {
     margin: 0 0 24px;
     font-size: 24px;

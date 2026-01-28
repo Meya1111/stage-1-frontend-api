@@ -10,7 +10,6 @@ function NewsCard({
   currentUserName,
   onSignInClick,
 }) {
-
   const [isSaved, setIsSaved] = useState(() =>
     isArticleSaved(currentUserName, article.url)
   );
@@ -21,23 +20,44 @@ function NewsCard({
 
   function handleSaveClick(e) {
     e.stopPropagation();
-  
+
     if (!isLoggedIn) return;
-  
+
     if (typeof onSave === "function") {
       onSave(article, keyword);
     }
-  
+
     setIsSaved(true);
   }
 
   return (
     <li className="card">
-      <img
-        src={article.urlToImage}
-        alt={article.title}
-        className="card__image"
-      />
+      <a
+        href={article.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="card__link"
+      >
+        <img
+          src={article.urlToImage}
+          alt={article.title}
+          className="card__image"
+        />
+
+        <div className="card__content">
+          <p className="card__date">
+            {new Date(article.publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+
+          <h3 className="card__title">{article.title}</h3>
+          <p className="card__text">{article.description}</p>
+          <p className="card__source">{article.source.name}</p>
+        </div>
+      </a>
 
       <button
         className={`card__save-button ${
@@ -51,20 +71,6 @@ function NewsCard({
           <span className="card__save-tooltip">Sign in to save articles</span>
         )}
       </button>
-
-      <div className="card__content">
-        <p className="card__date">
-          {new Date(article.publishedAt).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
-
-        <h3 className="card__title">{article.title}</h3>
-        <p className="card__text">{article.description}</p>
-        <p className="card__source">{article.source.name}</p>
-      </div>
     </li>
   );
 }

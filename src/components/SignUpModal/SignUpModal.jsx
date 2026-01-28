@@ -1,5 +1,6 @@
 import "./SignUpModal.css";
 import { useState } from "react";
+import closeIcon from "../../assets/close22.svg";
 
 function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
   if (!isOpen) return null;
@@ -24,14 +25,14 @@ function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
       <div className="modal__overlay" onClick={onClose}></div>
 
       <div className="modal__content modal__content_auth">
-        <button
-          type="button"
-          className="modal__close"
-          onClick={onClose}
-          aria-label="Close modal"
-        >
-          x
-        </button>
+       <button
+                type="button"
+                className="modal__close"
+                onClick={onClose}
+                aria-label="Close modal"
+              >
+                <img src={closeIcon} alt="close" className="modal__close-icon" />
+              </button>
 
         <h2 className="modal__title">Sign up</h2>
 
