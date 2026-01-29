@@ -3,16 +3,14 @@ import { useState } from "react";
 import closeIcon from "../../assets/close22.svg";
 
 function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
-  if (!isOpen) return null;
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [submitError, setSubmitError] = useState("");
+
+  if (!isOpen) return null;
 
   const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
   const isPasswordValid = password.length >= 6;
@@ -25,14 +23,14 @@ function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
       <div className="modal__overlay" onClick={onClose}></div>
 
       <div className="modal__content modal__content_auth">
-       <button
-                type="button"
-                className="modal__close"
-                onClick={onClose}
-                aria-label="Close modal"
-              >
-                <img src={closeIcon} alt="close" className="modal__close-icon" />
-              </button>
+        <button
+          type="button"
+          className="modal__close"
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          <img src={closeIcon} alt="close" className="modal__close-icon" />
+        </button>
 
         <h2 className="modal__title">Sign up</h2>
 
@@ -45,7 +43,6 @@ function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              setEmailError("");
               setSubmitError("");
             }}
           />
@@ -63,16 +60,12 @@ function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
-              setPasswordError("");
             }}
           />
           {password && !isPasswordValid && (
             <span className="modal__error">
               Password must be at least 6 characters
             </span>
-          )}
-          {usernameError && (
-            <span className="modal__error">{usernameError}</span>
           )}
         </label>
 
@@ -109,7 +102,6 @@ function SignUpModal({ isOpen, onClose, onSwitch, onSuccess }) {
               setSubmitError("This email is not available");
               return;
             }
-
             onSuccess();
           }}
         >

@@ -3,8 +3,6 @@ import { useState } from "react";
 import closeIcon from "../../assets/close22.svg";
 
 function LoginModal({ isOpen, onClose, onSwitch, onLogin }) {
-  if (!isOpen) return null;
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
@@ -12,6 +10,8 @@ function LoginModal({ isOpen, onClose, onSwitch, onLogin }) {
   const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
   const isFormValid = isEmailValid && password.length >= 1;
 
+ if (!isOpen) return null;
+ 
   return (
     <div className="modal">
       <div className="modal__overlay" onClick={onClose}></div>

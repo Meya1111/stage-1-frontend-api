@@ -21,7 +21,6 @@ import {
 function App() {
   const location = useLocation();
   const isSavedPage = location.pathname === "/saved-news";
-  const [keyword, setKeyword] = React.useState("");
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
@@ -34,7 +33,6 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
 
   function handleSearch(keyword) {
-    setKeyword(keyword);
     setIsLoading(true);
     setIsSearched(true);
 
