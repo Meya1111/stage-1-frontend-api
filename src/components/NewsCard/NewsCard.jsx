@@ -1,5 +1,5 @@
 import "./NewsCard.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { isArticleSaved } from "../../utils/savedArticles.js";
 
 function NewsCard({
@@ -12,10 +12,6 @@ function NewsCard({
   const [isSaved, setIsSaved] = useState(() =>
     isArticleSaved(currentUserName, article.url)
   );
-
-  useEffect(() => {
-    setIsSaved(isArticleSaved(currentUserName, article.url));
-  }, [currentUserName, article.url, isLoggedIn]);
 
   function handleSaveClick(e) {
     e.stopPropagation();

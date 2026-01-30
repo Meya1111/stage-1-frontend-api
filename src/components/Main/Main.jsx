@@ -12,8 +12,6 @@ function Main({
   isLoggedIn,
   onSignInClick,
   onSaveArticle,
-  saveArticles,
-  currentUser,
 }) {
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
@@ -129,21 +127,6 @@ function Main({
                   document.getElementById("author-avatar-input").click()
                 }
               >
-                <div className="author__smiley">
-                  <span className="author__eye author__eye_left"></span>
-                  <span className="author__eye author__eye_right"></span>
-                  <img
-                    src={authorSmile}
-                    alt="smile"
-                    className="author__smile"
-                  />
-                </div>
-
-                <p className="author__avatar-text">
-                  Placeholder image.
-                  <br />
-                  Put an image of yourself here.
-                </p>
               </div>
             )}
           </div>

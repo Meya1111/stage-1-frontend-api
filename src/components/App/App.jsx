@@ -27,13 +27,11 @@ function App() {
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
   const [isSearched, setIsSearched] = React.useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
 
   function handleSearch(keyword) {
-    setIsLoading(true);
     setIsSearched(true);
 
     getArticles(keyword)
@@ -45,9 +43,6 @@ function App() {
         console.error(err);
         setArticles([]);
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
   }
 
   function handleSaveArticle(article, keyword) {

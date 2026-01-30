@@ -8,9 +8,7 @@ function Header({
   isLoggedIn,
   currentUser,
   onLogout,
-  onSearch,
 }) {
-  const [keyword, setKeyword] = useState("");
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

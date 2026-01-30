@@ -1,17 +1,9 @@
+/* global process */
+
 const API_KEY = "4bee7c3e3d654a099bb85948d861b4d1";
 const BASE_URL = process.env.NODE_ENV === "production" 
   ? "https://nomoreparties.co/news/v2/everything"
   : "https://newsapi.org/v2/everything";
-
-
-function fetchWithFallback(everythingUrl, fallbackUrl) {
-  return fetch(everythingUrl).then((res) => {
-    if (res.status === 426) {
-      return fetch(fallbackUrl);
-    }
-    return res;
-  });
-}
 
 export function getArticles(keyword) {
   const from = new Date();
