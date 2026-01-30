@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import RegisteredSuccessModal from "../RegisteredSuccessModal/RegisteredSuccessModal";
-import { getArticles } from "../../utils/newsApi";
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
@@ -27,23 +26,7 @@ function App() {
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [articles, setArticles] = useState([]);
-  const [isSearched, setIsSearched] = React.useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
-
-  function handleSearch(keyword) {
-    setIsSearched(true);
-
-    getArticles(keyword)
-      .then((data) => {
-        console.log("REAL API DATA:", data);
-        setArticles(data.articles || []);
-      })
-      .catch((err) => {
-        console.error(err);
-        setArticles([]);
-      })
-  }
 
   function handleSaveArticle(article, keyword) {
     if (!currentUser?.name) return;
@@ -101,7 +84,6 @@ function App() {
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
         onLogout={handleLogout}
-        onSearch={handleSearch}
       />
       <Routes>
         <Route
