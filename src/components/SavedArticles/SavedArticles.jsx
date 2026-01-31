@@ -8,7 +8,8 @@ export default function SavedArticles({
   onDelete,
 }) {
   const keywordsLine = useMemo(() => {
-    const keywords = savedArticles.map((a) => a.keyword)
+    const keywords = savedArticles.map((a) => a.keyword);
+
     const counts = keywords.reduce((acc, k) => {
       acc[k] = (acc[k] || 0) + 1;
       return acc;
@@ -71,21 +72,35 @@ export default function SavedArticles({
                   </span>
                 </button>
 
-                <img className="card__image" src={a.urlToImage} alt={a.title} />
+                <a href={a.url} target="_blank" rel="noopener noreferrer">
+                  <img
+                    className="card__image"
+                    src={a.urlToImage}
+                    alt={a.title}
+                  />
+                </a>
               </div>
 
-              <div className="card__content">
-                <p className="card__date">
-                  {a.publishedAt
-                    ? new Date(a.publishedAt).toLocaleDateString()
-                    : ""}
-                </p>
-                <h2 className="card__title">{a.title}</h2>
-                <p className="card__text">{a.description}</p>
-                <p className="card__source">
-                  {(a.source && a.source.name) || a.sourceName || ""}
-                </p>
-              </div>
+              <a
+                href={a.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card__link"
+              >
+                <div className="card__content">
+                  <p className="card__date">
+                    {a.publishedAt
+                      ? new Date(a.publishedAt).toLocaleDateString()
+                      : ""}
+                  </p>
+
+                  <h2 className="card__title">{a.title}</h2>
+                  <p className="card__text">{a.description}</p>
+                  <p className="card__source">
+                    {(a.source && a.source.name) || a.sourceName || ""}
+                  </p>
+                </div>
+              </a>
             </article>
           ))}
         </div>
