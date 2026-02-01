@@ -101,4 +101,8 @@
     align-items: center;
   }
 
+  .hero__content {
+   margin: 80px 12px; 
+  }
+
   }

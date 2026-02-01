@@ -12,6 +12,7 @@ function Main({
   isLoggedIn,
   onSignInClick,
   onSaveArticle,
+  currentUser,
 }) {
   const [keyword, setKeyword] = React.useState("");
   const [articles, setArticles] = React.useState([]);
@@ -93,6 +94,7 @@ function Main({
                 onSave={onSaveArticle}
                 keyword={keyword}
                 onSignInClick={onSignInClick}
+                currentUserName={currentUser ? currentUser.name : ""}
               />
             ))}
           </ul>
