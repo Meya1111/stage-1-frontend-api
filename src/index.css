@@ -1,0 +1,17 @@
+@import "././vendor/fonts/fonts.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f6f7;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
